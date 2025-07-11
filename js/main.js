@@ -62,7 +62,13 @@ const productosHarinas = [
     beneficios: "Menor contenido de fibra que la versión con piel, pero más neutra en sabor. Rica en grasas buenas.",
     usos: "Se usa en macarons, tortas finas, bizcochos, panificados bajos en carbohidratos.",
     palabrasClave: ["macarons", "harina suave", "sin gluten", "almendras sin piel", "low carb"]
-  }
+  },
+  {nombre: "harina de arroz yamani",
+  descripcion: "Harina obtenida del arroz Yamani, un arroz integral de grano corto y textura suave, conocido por su sabor delicado y alto valor nutricional.",
+  beneficios: "Libre de gluten, rica en fibra, ayuda a mejorar la digestión y es una buena fuente de energía. Además, contiene antioxidantes y minerales esenciales como magnesio y fósforo.",
+  usos: "Ideal para repostería sin gluten, panes, tortas, galletas y para espesar salsas o sopas.",
+  palabrasClave: ["arroz yamani", "harina sin gluten", "fibra", "repostería sin gluten", "harina saludable", "espesante"]
+    }
 ];
 
 // Array vacío si no tenés semillas aún
