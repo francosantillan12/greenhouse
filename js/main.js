@@ -244,7 +244,7 @@ function mostrarMensaje(remitente, texto, guardar = true) {
   mensaje.classList.add(remitente);
   mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🤖 Bot"}:</span> ${texto}`;
   chat.appendChild(mensaje);
-  chat.scrollTop = chat.scrollHeight;
+  // chat.scrollTop = chat.scrollHeight; // PARA QUE HAGA SCROLL HACIA ABAJO**/
 
   // Guardar en localStorage si corresponde
   if (guardar) {
