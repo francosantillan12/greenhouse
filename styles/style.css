@@ -190,21 +190,6 @@ button {
   position: relative;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  width: 40px;
-  height: 40px;
-}
-
-.logo h1 {
-  font-size: 24px;
-  color: #ffffff;
-}
 
 /* NAVBAR */
 .navbar ul {

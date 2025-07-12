@@ -1,0 +1,44 @@
+# 🌿 Simulador de Productos Naturales - Franco Santillán
+
+Este proyecto consiste en un simulador de productos naturales como harinas, semillas y especias. 
+
+## 🧠 Objetivos del proyecto
+
+- Simular un chatbot que responde a las consultas del usuario sobre productos naturales.
+- Aplicar conceptos fundamentales de JavaScript incluyendo DOM, eventos, objetos, arrays y localStorage.
+- Implementar una lógica de búsqueda que identifique productos por nombre exacto, categoría o palabras clave relacionadas.
+
+## 🧩 Tecnologías utilizadas
+
+- HTML
+- CSS
+- JavaScript 
+
+## 🔍 Cómo usar el simulador
+
+1. Ingresá una consulta en el campo de texto, como por ejemplo:
+   - `harina de chía` → devuelve información exacta.
+   - `harinas` → muestra todas las harinas disponibles.
+   - `fibra` → recomienda productos que contienen esa palabra clave.
+
+2. El chat guardará el historial en tu navegador gracias a `localStorage`.
+
+3. Podés cerrar y volver a abrir la página, y los mensajes seguirán ahí.
+
+## ✅ Funcionalidades implementadas
+
+- Búsqueda exacta por nombre de producto.
+- Filtrado por categoría (`harinas`, `semillas`, etc.).
+- Recomendaciones por palabras clave.
+- Estructura de objetos con propiedades coherentes.
+- Uso de métodos de arrays: `find()`, `filter()`, `some()`, `map()`.
+- Integración completa entre JS y HTML mediante el DOM.
+- Persistencia de mensajes en el navegador mediante `localStorage`.
+
+
+
+
+```bash
+git clone https://github.com/francosantillan12/JavaScript-Coderhouse.git
+cd JavaScript-Coderhouse
+abrí el archivo index.html en tu navegador
