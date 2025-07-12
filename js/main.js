@@ -103,7 +103,7 @@ const productosSemillas = [
     descripcion: "Las semillas de chía provienen de la planta Salvia hispanica. Son pequeñas, oscuras y muy nutritivas.",
     beneficios: "Ricas en omega-3, fibra, antioxidantes, calcio, magnesio y proteínas vegetales.",
     usos: "Se consumen en puddings, yogures, licuados, jugos, ensaladas o panificados.",
-    palabrasClave: ["chia", "omega 3", "fibra", "saciedad", "antioxidantes", "veganos", "superalimento"]
+    palabrasClave: ["semillas de chia","chia", "omega 3", "fibra", "saciedad", "antioxidantes", "veganos", "superalimento"]
   },
   {
     id: 11,
@@ -201,30 +201,43 @@ if (historialGuardado) {
 formulario.addEventListener("submit", function(evento) {
   evento.preventDefault();
   const consulta = entradaUsuario.value.toLowerCase().trim();
-  if (!consulta) return; // evita enviar vacío
+  if (!consulta) return;
+
   mostrarMensaje("usuario", consulta);
 
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
+
+  // Buscar producto con nombre exacto
   const productoExacto = baseDeDatos.find(p => consulta === p.nombre.toLowerCase());
-  const categoriaBuscada = baseDeDatos.filter(p => p.categoria === consulta);
-  const productosRelacionados = baseDeDatos.filter(p =>
-    p.palabrasClave.some(palabra => consulta.includes(palabra.toLowerCase()))
-  );
 
   if (productoExacto) {
+    // Si encontró nombre exacto, mostrar solo ese
     mostrarProducto(productoExacto);
-  } else if (categoriaBuscada.length > 0) {
-    mostrarMensaje("bot", `Productos en la categoría "${consulta}":`);
-    categoriaBuscada.forEach(p => mostrarProducto(p));
-  } else if (productosRelacionados.length > 0) {
-    mostrarMensaje("bot", "Te recomiendo estos productos relacionados:");
-    productosRelacionados.forEach(p => mostrarProducto(p));
   } else {
-    mostrarMensaje("bot", "Lo siento, no encontré ningún producto relacionado con tu consulta.");
+    // Si no hay nombre exacto, buscar categoría o productos relacionados (por palabra clave)
+    const categoriaBuscada = baseDeDatos.filter(p => p.categoria === consulta);
+
+    if (categoriaBuscada.length > 0) {
+      mostrarMensaje("Mapachito", `Productos en la categoría "${consulta}":`);
+      categoriaBuscada.forEach(p => mostrarProducto(p));
+    } else {
+      // Buscar productos relacionados por palabra clave, usando includes pero sobre palabras individuales
+      const productosRelacionados = baseDeDatos.filter(p =>
+        p.palabrasClave.some(palabra => palabra.toLowerCase() === consulta)
+      );
+
+      if (productosRelacionados.length > 0) {
+        mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:");
+        productosRelacionados.forEach(p => mostrarProducto(p));
+      } else {
+        mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.");
+      }
+    }
   }
 
   entradaUsuario.value = "";
 });
+
 
 // Función que muestra un producto
 function mostrarProducto(prod) {
@@ -235,16 +248,16 @@ function mostrarProducto(prod) {
     🍽️ Usos: ${prod.usos}<br>
     🆔 ID: ${prod.id}
   `;
-  mostrarMensaje("bot", respuesta);
+  mostrarMensaje("Mapachito", respuesta);
 }
 
 // Mostrar mensaje y guardar en localStorage
 function mostrarMensaje(remitente, texto, guardar = true) {
   const mensaje = document.createElement("p");
   mensaje.classList.add(remitente);
-  mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🤖 Bot"}:</span> ${texto}`;
+  mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
   chat.appendChild(mensaje);
-  // chat.scrollTop = chat.scrollHeight; // PARA QUE HAGA SCROLL HACIA ABAJO**/
+  chat.scrollTop = chat.scrollHeight; // PARA QUE HAGA SCROLL HACIA ABAJO**/
 
   // Guardar en localStorage si corresponde
   if (guardar) {
@@ -259,6 +272,7 @@ function guardarMensajeEnLocalStorage(remitente, texto) {
   historial.push({ remitente, texto });
   localStorage.setItem("chatHistorial", JSON.stringify(historial));
 }
+
 
 
 
