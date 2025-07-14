@@ -83,21 +83,204 @@ const productosHarinas = [
     palabrasClave: ["proteína", "soja", "hormonas", "calcio", "harina proteica"]
   },
 
-    {
+  {
     id: 9,
     nombre: "semolin de trigo",
     categoria: "harinas",
     descripcion: "Harina gruesa hecha a partir del endospermo del trigo duro, con textura arenosa y color amarillento.",
     beneficios: "Buena fuente de proteínas, hierro y vitaminas del grupo B. Aporta energía sostenida.",
     usos: "Ideal para preparar pastas caseras, ñoquis, sopas, postres como la polenta dulce o como base para panes rústicos.",
-    palabrasClave: ["semolin","semolín","trigo","sémola","trigo duro", "pastas", "energía", "harina gruesa", "vitaminas B"]}
+    palabrasClave: ["semolin","semolín","trigo","sémola","trigo duro", "pastas", "energía", "harina gruesa", "vitaminas B"],
+  },
+
+  {
+  id: 10,  
+  nombre: "harina de centeno",
+  categoria: "harinas",
+  descripcion: "Harina obtenida del grano entero del centeno, con sabor característico y alto contenido en fibra.",
+  beneficios: "Ayuda a la digestión, aporta energía sostenida y contribuye a regular el colesterol.",
+  usos: "Ideal para panes oscuros, masas fermentadas, galletas y recetas tradicionales europeas.",
+  palabrasClave: ["centeno", "fibra", "pan oscuro", "digestión", "energía"]
+  },
+
+  {
+  id: 11,  
+  nombre: "harina de arvejas",
+  categoria: "harinas",
+  descripcion: "Harina obtenida a partir de arvejas secas molidas, rica en proteínas y fibra.",
+  beneficios: "Alta en proteínas vegetales, ayuda a la digestión y es baja en grasas.",
+  usos: "Ideal para panes, tortas, galletas y para enriquecer masas saladas.",
+  palabrasClave: ["arvejas", "proteínas", "fibra", "masa salada", "harina vegetal"]
+  },
+
+  {
+  id: 12,  
+  nombre: "harina de coco",
+  categoria: "harinas",
+  descripcion: "Harina obtenida de la pulpa seca del coco, molida finamente y sin gluten.",
+  beneficios: "Alta en fibra, baja en carbohidratos y rica en grasas saludables.",
+  usos: "Ideal para repostería, panes, tortas y productos keto o sin gluten.",
+  palabrasClave: ["coco", "fibra", "baja en carbohidratos", "keto", "sin gluten"]
+  },
+
+  {
+  id: 13, 
+  nombre: "harina de maní",
+  categoria: "harinas",
+  descripcion: "Harina obtenida al moler maní tostado y pelado, con alto contenido proteico.",
+  beneficios: "Rica en proteínas, grasas saludables y fibra. Ayuda a la saciedad y aporta energía.",
+  usos: "Ideal para repostería, panes, barras energéticas y productos sin gluten.",
+  palabrasClave: ["maní","mani","proteinas","proteínas", "proteínas", "grasas saludables", "fibra", "energía", "sin gluten"]
+  },
+
+  {
+  id: 14, 
+  nombre: "harina de nuez",
+  categoria: "harinas",
+  descripcion: "Harina elaborada al moler nueces tostadas, con un sabor intenso y textura fina.",
+  beneficios: "Alta en grasas saludables, antioxidantes y vitamina E. Promueve la salud cardiovascular.",
+  usos: "Perfecta para repostería, panes, galletas y recetas gourmet.",
+  palabrasClave: ["nuez", "grasas saludables", "antioxidantes", "vitamina E", "repostería", "salud cardiovascular"]
+  },
+
+  {
+  id: 15, 
+  nombre: "harina para fainá",
+  categoria: "harinas",
+  descripcion: "Harina de garbanzos especialmente seleccionada para preparar fainá, con textura fina y sabor suave.",
+  beneficios: "Alta en proteínas vegetales, fibra y minerales. Ideal para dietas sin gluten y veganas.",
+  usos: "Perfecta para preparar fainá, tortillas y otras recetas saladas sin TACC.",
+  palabrasClave: ["fainá", "garbanzo", "sin gluten", "vegano", "proteína vegetal", "sin TACC"]
+  },
+
+  {
+  id: 16, 
+  nombre: "harina paraguaya",
+  categoria: "harinas",
+  descripcion: "Harina especial para preparar la tradicional harina paraguaya, con textura adecuada para bizcochos y panes dulces.",
+  beneficios: "Fuente de carbohidratos que aportan energía, fácil de digerir y versátil en la cocina.",
+  usos: "Ideal para tortas paraguayas, bizcochos, panes dulces y preparaciones similares.",
+  palabrasClave: ["harina paraguaya", "bizcocho", "torta paraguaya", "pan dulce", "carbohidratos", "energía"]
+  },
+
+  {
+  id: 10,
+  nombre: "lino molido",
+  categoria: "semillas",
+  descripcion: "Semillas de lino molidas finamente, ideales para mejorar la digestión y aportar fibra y omega-3.",
+  beneficios: "Rico en fibra soluble e insoluble, omega-3 vegetal, lignanos y antioxidantes. Ayuda a regular el tránsito intestinal y la salud cardiovascular.",
+  usos: "Se agrega en yogures, batidos, panes, galletas o como suplemento nutricional en la dieta diaria.",
+  palabrasClave: ["lino","lino molido", "linaza", "fibra", "omega 3", "digestión", "salud cardiovascular"]
+  },
+
+  {
+  id: 11, 
+  nombre: "salvado de trigo fino",
+  categoria: "semillas",
+  descripcion: "Capa externa fina y crujiente del grano de trigo, rica en fibra insoluble y nutrientes esenciales.",
+  beneficios: "Alto contenido de fibra, ayuda a mejorar el tránsito intestinal, reduce el colesterol y aporta saciedad.",
+  usos: "Ideal para agregar en yogures, batidos, panes, galletas o ensaladas para aumentar el aporte de fibra.",
+  palabrasClave: ["salvado", "trigo", "fibra", "tránsito intestinal", "colesterol", "saciedad"]
+  },
+
+  {
+  id: 13,
+  nombre: "sésamo triturado",
+  categoria: "semillas",
+  descripcion: "Semillas de sésamo ligeramente trituradas para facilitar su uso en recetas y mejorar su absorción.",
+  beneficios: "Ricas en calcio, hierro, magnesio y grasas saludables. Ayuda a fortalecer huesos y mejorar la digestión.",
+  usos: "Se usa en ensaladas, panes, galletas, aderezos y como topping en platos variados.",
+  palabrasClave: ["sésamo", "sesamo", "calcio", "magnesio", "grasas saludables", "digestión", "semillas trituradas"]
+  },
+
+  {
+  id: 14, 
+  nombre: "soja texturizada",
+  categoria: "proteínas",
+  descripcion: "Producto derivado de la soja desgrasada, con textura similar a la carne, muy usada como sustituto vegetal.",
+  beneficios: "Alta en proteínas, baja en grasas, sin colesterol. Ideal para dietas veganas y vegetarianas.",
+  usos: "Se utiliza en guisos, estofados, hamburguesas vegetales, albóndigas y recetas que reemplazan la carne.",
+  palabrasClave: ["soja", "texturizada", "proteína vegetal", "vegano", "sustituto de carne", "baja en grasas"]
+  },
+
+  {
+  id: 15, 
+  nombre: "soja texturizada gruesa",
+  categoria: "proteínas",
+  descripcion: "Soja texturizada con trozos más grandes y consistentes, ideal para platos donde se quiere una textura más firme.",
+  beneficios: "Alta en proteínas, baja en grasas, sin colesterol. Aporta saciedad y es apta para dietas veganas y vegetarianas.",
+  usos: "Perfecta para guisos, estofados, rellenos y preparaciones que requieren una textura más marcada.",
+  palabrasClave: ["soja", "texturizada", "gruesa", "proteína vegetal", "vegano", "sustituto de carne", "textura firme"]
+  },
+
+  {
+  id: 16, 
+  nombre: "trigo burgol fino",
+  categoria: "cereales",
+  descripcion: "Trigo partido y precocido, molido en partículas finas, ideal para ensaladas y preparaciones rápidas.",
+  beneficios: "Fuente de fibra, vitaminas y minerales. Favorece la digestión y aporta energía sostenida.",
+  usos: "Usado en tabulé, ensaladas, rellenos, sopas y guisos.",
+  palabrasClave: ["trigo burgol", "burgol", "trigo partido", "fino", "fibra", "tabulé", "cereales"]
+  },
+
+  {
+  id: 17, 
+  nombre: "trigo burgol grueso",
+  categoria: "cereales",
+  descripcion: "Trigo partido y precocido en trozos más grandes, con textura más gruesa y consistente.",
+  beneficios: "Fuente de fibra, vitaminas y minerales. Ayuda a la digestión y proporciona energía sostenida.",
+  usos: "Ideal para guisos, sopas, rellenos y platos tradicionales del Medio Oriente.",
+  palabrasClave: ["trigo burgol", "burgol", "trigo partido", "grueso", "fibra", "guisos", "cereales"]
+  },
+
+  {
+  id: 18, 
+  nombre: "gluten puro",
+  categoria: "proteínas",
+  descripcion: "Proteína del trigo altamente concentrada, obtenida tras eliminar el almidón y otros componentes.",
+  beneficios: "Alto contenido proteico, ideal para aumentar la elasticidad y estructura en productos horneados.",
+  usos: "Se usa en panes, productos de panadería, y para mejorar la textura en masas y productos veganos o vegetarianos.",
+  palabrasClave: ["gluten", "proteína de trigo", "elasticidad", "panadería", "proteína vegetal"]
+  },
+
+  {
+  id: 19, 
+  nombre: "fariña de mandioca",
+  categoria: "harinas",
+  descripcion: "Harina tradicional obtenida del secado y molido de la mandioca (yuca), con textura granulada y sabor característico.",
+  beneficios: "Fuente de carbohidratos, libre de gluten y fácil digestión. Aporta energía rápida y es versátil en la cocina.",
+  usos: "Ideal para acompañamientos, espesar guisos, preparar panes típicos, tortas y como base para recetas sin gluten.",
+  palabrasClave: ["mandioca", "yuca", "harina sin gluten", "carbohidratos", "cocina tradicional"]
+  },
+
+  {
+  id: 20, 
+  nombre: "germen de trigo",
+  categoria: "harinas",
+  descripcion: "Parte nutritiva del trigo que se separa durante el proceso de molienda. Rico en vitaminas y minerales.",
+  beneficios: "Alto contenido en vitamina E, antioxidantes, ácido fólico y fibra. Ayuda a la salud cardiovascular y digestiva.",
+  usos: "Se puede agregar a yogures, batidos, cereales, panes y productos de repostería para enriquecer su valor nutricional.",
+  palabrasClave: ["germen","trigo","vitamina E", "antioxidantes", "fibra", "ácido fólico", "nutrición", "salud cardiovascular"]
+  },
+
+  {
+  id: 21, // ajustá el ID según corresponda
+  nombre: "arvejas texturizadas",
+  categoria: "semillas",
+  descripcion: "Proteína vegetal deshidratada obtenida a partir de arvejas, ideal como sustituto de carne en dietas veganas y vegetarianas.",
+  beneficios: "Alta en proteínas, baja en grasas, buena fuente de fibra y libre de gluten.",
+  usos: "Se usa en guisos, hamburguesas vegetales, albóndigas, rellenos y otras preparaciones similares a la carne.",
+  palabrasClave: ["texturizada","arvejas","arveja texturizada","proteína vegetal", "vegano", "sin gluten", "sustituto de carne", "arvejas", "alta proteína"]
+  },
+
+
 ];
 
 
 //*******************SEMILLAS**************** */
 const productosSemillas = [
   {
-    id: 10,
+    id: 100,
     nombre: "semillas de chía",
     categoria: "semillas",
     descripcion: "Las semillas de chía provienen de la planta Salvia hispanica. Son pequeñas, oscuras y muy nutritivas.",
@@ -106,7 +289,7 @@ const productosSemillas = [
     palabrasClave: ["semillas de chia","chia", "omega 3", "fibra", "saciedad", "antioxidantes", "veganos", "superalimento"]
   },
   {
-    id: 11,
+    id: 101,
     nombre: "semillas de lino",
     categoria: "semillas",
     descripcion: "Las semillas de lino (linaza) provienen de la planta Linum usitatissimum. Son pequeñas, marrones o doradas.",
@@ -115,7 +298,7 @@ const productosSemillas = [
     palabrasClave: ["lino", "linaza", "omega 3", "fibra", "digestión", "estrés oxidativo", "hormonas"]
   },
   {
-    id: 12, // ID único, sigue la numeración que estés usando
+    id: 102, // ID único, sigue la numeración que estés usando
     nombre: "semillas de amapola",
     categoria: "semillas",
     descripcion: "Pequeñas semillas negras obtenidas de la planta de amapola, con sabor suave y textura crujiente.",
@@ -132,25 +315,25 @@ const productosSemillas = [
 //*******************ESPECIAS**************** */
 const productosEspecias = [
     {
-    id: 13,
+    id:200 ,
     nombre: "té verde matcha",
     categoria: "especias",
     descripcion: "Polvo fino de hojas de té verde molidas, con sabor intenso y un color verde vibrante.",
     beneficios: "Alto en antioxidantes, mejora el metabolismo, ayuda a la concentración y a la energía sostenida.",
     usos: "Se consume en infusiones, smoothies, postres y como ingrediente en recetas saludables.",
-    palabrasClave: ["matcha", "antioxidantes", "metabolismo", "energía", "infusión"]
+    palabrasClave: ["té","te","matcha", "antioxidantes", "metabolismo", "energía", "infusión"]
   },
   {
-    id: 14,
+    id:201 ,
     nombre: "té negro earl grey",
     categoria: "especias",
     descripcion: "Té negro aromatizado con aceite de bergamota, de sabor cítrico y refrescante.",
     beneficios: "Ayuda a la digestión, es antioxidante y aporta un sabor único y refrescante.",
     usos: "Se consume solo o con leche, ideal para la tarde y momentos de relax.",
-    palabrasClave: ["earl grey", "bergamota", "digestión", "antioxidantes", "infusión"]
+    palabrasClave: ["té","te","earl grey", "bergamota", "digestión", "antioxidantes", "infusión"]
   },
   {
-    id: 15, // actualizá este ID según el último que tengas
+    id: 202, // actualizá este ID según el último que tengas
     nombre: "hibiscus en flor",
     categoria: "especias",
     descripcion: "Flores secas de hibiscus sabdariffa, conocidas por su sabor ácido y color rojo intenso. Se usan comúnmente en infusiones naturales.",
@@ -182,12 +365,16 @@ function agregarProducto(nuevoProducto, categoriaArray) {
 
 //************LOGICA*******************/
 
-
-
-
 const formulario = document.getElementById("formulario");
 const entradaUsuario = document.getElementById("entradaUsuario");
 const chat = document.getElementById("chat");
+
+// Objeto para acceder a cada array según su categoría
+const basePorCategoria = {
+  harinas: productosHarinas,
+  semillas: productosSemillas,
+  especias: productosEspecias,
+};
 
 // Cargar mensajes previos desde localStorage al iniciar
 const historialGuardado = localStorage.getItem("chatHistorial");
@@ -196,6 +383,18 @@ if (historialGuardado) {
   mensajes.forEach(({ remitente, texto }) => {
     mostrarMensaje(remitente, texto, false);
   });
+} else {
+  mostrarMensaje(
+    "Mapachito",
+    `Hola, soy Mapachito y estoy acá para ayudarte. 
+     Ingresá el nombre del producto que estás buscando o clickea la categoría que estás buscando:
+     <div class="contenedor-categorias">
+       <button class="categoria-boton" data-categoria="harinas">Harinas</button>
+       <button class="categoria-boton" data-categoria="semillas">Semillas</button>
+       <button class="categoria-boton" data-categoria="especias">Especias</button>
+     </div>`,
+    false
+  );
 }
 
 formulario.addEventListener("submit", function(evento) {
@@ -238,7 +437,6 @@ formulario.addEventListener("submit", function(evento) {
   entradaUsuario.value = "";
 });
 
-
 // Función que muestra un producto
 function mostrarProducto(prod) {
   const respuesta = `
@@ -255,13 +453,36 @@ function mostrarProducto(prod) {
 function mostrarMensaje(remitente, texto, guardar = true) {
   const mensaje = document.createElement("p");
   mensaje.classList.add(remitente);
+
+  // Insertamos el texto con los botones (si los tiene)
   mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
   chat.appendChild(mensaje);
-  chat.scrollTop = chat.scrollHeight; // PARA QUE HAGA SCROLL HACIA ABAJO**/
+  chat.scrollTop = chat.scrollHeight; // Para hacer scroll hacia abajo
 
   // Guardar en localStorage si corresponde
   if (guardar) {
     guardarMensajeEnLocalStorage(remitente, texto);
+  }
+
+  // Si hay botones de categoría, les agregamos el evento click
+  mensaje.querySelectorAll(".categoria-boton").forEach(boton => {
+    boton.addEventListener("click", () => {
+      const categoria = boton.getAttribute("data-categoria");
+      mostrarProductosPorCategoria(categoria);
+    });
+  });
+}
+
+// Mostrar todos los productos de una categoría
+function mostrarProductosPorCategoria(categoria) {
+  const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
+  const productos = baseDeDatos.filter(p => p.categoria === categoria);
+
+  if (productos.length > 0) {
+    mostrarMensaje("Mapachito", `Estos son los productos en la categoría "${categoria}":`);
+    productos.forEach(p => mostrarProducto(p));
+  } else {
+    mostrarMensaje("Mapachito", `No encontré productos para la categoría "${categoria}".`);
   }
 }
 
@@ -272,6 +493,36 @@ function guardarMensajeEnLocalStorage(remitente, texto) {
   historial.push({ remitente, texto });
   localStorage.setItem("chatHistorial", JSON.stringify(historial));
 }
+
+// Botón borrar historial
+const botonBorrarHistorial = document.getElementById("borrarHistorial");
+
+botonBorrarHistorial.addEventListener("click", function () {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: "¡Esto borrará todo el historial del chat!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, borrar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem("chatHistorial");
+      chat.innerHTML = "";
+      console.clear();
+
+      Swal.fire(
+        '¡Borrado!',
+        'El historial del chat fue eliminado.',
+        'success'
+      );
+    }
+  });
+});
+
+
 
 
 

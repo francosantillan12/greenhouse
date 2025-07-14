@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #c5b522;
+  background-color: #ecd92a;
   margin: 0;
   padding: 0;
   font-family: 'Nunito Sans', sans-serif;
@@ -117,6 +117,7 @@ h2 {
   margin: 8px 0;
 }
 
+
 .usuario {
   align-self: flex-end;            /* mensajes a la derecha */
   background-color: #4CAF50;       /* verde */
@@ -165,6 +166,53 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.contenedor-categorias {
+  display: flex;
+  flex-direction: column; /* Para que los botones queden uno abajo del otro */
+  gap: 10px;              /* Espacio vertical entre botones */
+  margin-top: 10px;
+}
+
+.categoria-boton {
+  background-color: #000000; /* Azul bonito */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  width: 150px; /* ancho fijo para uniformidad */
+  text-align: center;
+}
+
+.categoria-boton:hover {
+  background-color: #dff800; /* Azul más oscuro al pasar el mouse */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+}
+
+.categoria-boton:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+
+#borrarHistorial {
+ 
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#borrarHistorial:hover {
+  background-color: #c82333;
 }
 
 
