@@ -164,7 +164,7 @@ const productosHarinas = [
   },
 
   {
-  id: 10,
+  id: 17,
   nombre: "lino molido",
   categoria: "semillas",
   descripcion: "Semillas de lino molidas finamente, ideales para mejorar la digestión y aportar fibra y omega-3.",
@@ -174,7 +174,7 @@ const productosHarinas = [
   },
 
   {
-  id: 11, 
+  id: 18, 
   nombre: "salvado de trigo fino",
   categoria: "semillas",
   descripcion: "Capa externa fina y crujiente del grano de trigo, rica en fibra insoluble y nutrientes esenciales.",
@@ -184,7 +184,7 @@ const productosHarinas = [
   },
 
   {
-  id: 13,
+  id: 19,
   nombre: "sésamo triturado",
   categoria: "semillas",
   descripcion: "Semillas de sésamo ligeramente trituradas para facilitar su uso en recetas y mejorar su absorción.",
@@ -194,7 +194,7 @@ const productosHarinas = [
   },
 
   {
-  id: 14, 
+  id: 20, 
   nombre: "soja texturizada",
   categoria: "proteínas",
   descripcion: "Producto derivado de la soja desgrasada, con textura similar a la carne, muy usada como sustituto vegetal.",
@@ -204,7 +204,7 @@ const productosHarinas = [
   },
 
   {
-  id: 15, 
+  id: 21, 
   nombre: "soja texturizada gruesa",
   categoria: "proteínas",
   descripcion: "Soja texturizada con trozos más grandes y consistentes, ideal para platos donde se quiere una textura más firme.",
@@ -214,7 +214,7 @@ const productosHarinas = [
   },
 
   {
-  id: 16, 
+  id: 22, 
   nombre: "trigo burgol fino",
   categoria: "cereales",
   descripcion: "Trigo partido y precocido, molido en partículas finas, ideal para ensaladas y preparaciones rápidas.",
@@ -224,7 +224,7 @@ const productosHarinas = [
   },
 
   {
-  id: 17, 
+  id: 23, 
   nombre: "trigo burgol grueso",
   categoria: "cereales",
   descripcion: "Trigo partido y precocido en trozos más grandes, con textura más gruesa y consistente.",
@@ -234,7 +234,7 @@ const productosHarinas = [
   },
 
   {
-  id: 18, 
+  id: 24, 
   nombre: "gluten puro",
   categoria: "proteínas",
   descripcion: "Proteína del trigo altamente concentrada, obtenida tras eliminar el almidón y otros componentes.",
@@ -244,7 +244,7 @@ const productosHarinas = [
   },
 
   {
-  id: 19, 
+  id: 25, 
   nombre: "fariña de mandioca",
   categoria: "harinas",
   descripcion: "Harina tradicional obtenida del secado y molido de la mandioca (yuca), con textura granulada y sabor característico.",
@@ -254,7 +254,7 @@ const productosHarinas = [
   },
 
   {
-  id: 20, 
+  id: 26, 
   nombre: "germen de trigo",
   categoria: "harinas",
   descripcion: "Parte nutritiva del trigo que se separa durante el proceso de molienda. Rico en vitaminas y minerales.",
@@ -264,7 +264,7 @@ const productosHarinas = [
   },
 
   {
-  id: 21, // ajustá el ID según corresponda
+  id: 27, // ajustá el ID según corresponda
   nombre: "arvejas texturizadas",
   categoria: "semillas",
   descripcion: "Proteína vegetal deshidratada obtenida a partir de arvejas, ideal como sustituto de carne en dietas veganas y vegetarianas.",
@@ -405,31 +405,32 @@ formulario.addEventListener("submit", function(evento) {
   mostrarMensaje("usuario", consulta);
 
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
-
-  // Buscar producto con nombre exacto
   const productoExacto = baseDeDatos.find(p => consulta === p.nombre.toLowerCase());
 
   if (productoExacto) {
-    // Si encontró nombre exacto, mostrar solo ese
+    // Mostrar producto con delay para simular "pensamiento"
     mostrarProducto(productoExacto);
   } else {
-    // Si no hay nombre exacto, buscar categoría o productos relacionados (por palabra clave)
     const categoriaBuscada = baseDeDatos.filter(p => p.categoria === consulta);
 
     if (categoriaBuscada.length > 0) {
-      mostrarMensaje("Mapachito", `Productos en la categoría "${consulta}":`);
-      categoriaBuscada.forEach(p => mostrarProducto(p));
+      mostrarMensaje("Mapachito", `Productos en la categoría "${consulta}":`, true, 500);
+      categoriaBuscada.forEach((p, i) => {
+        // Muestra cada producto con un pequeño delay escalonado para mejor efecto
+        setTimeout(() => mostrarProducto(p), 700 * (i + 1));
+      });
     } else {
-      // Buscar productos relacionados por palabra clave, usando includes pero sobre palabras individuales
       const productosRelacionados = baseDeDatos.filter(p =>
         p.palabrasClave.some(palabra => palabra.toLowerCase() === consulta)
       );
 
       if (productosRelacionados.length > 0) {
-        mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:");
-        productosRelacionados.forEach(p => mostrarProducto(p));
+        mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:", true, 500);
+        productosRelacionados.forEach((p, i) => {
+          setTimeout(() => mostrarProducto(p), 700 * (i + 1));
+        });
       } else {
-        mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.");
+        mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.", true, 500);
       }
     }
   }
@@ -437,7 +438,7 @@ formulario.addEventListener("submit", function(evento) {
   entradaUsuario.value = "";
 });
 
-// Función que muestra un producto
+
 function mostrarProducto(prod) {
   const respuesta = `
     <strong>${prod.nombre.toUpperCase()}</strong><br>
@@ -446,32 +447,36 @@ function mostrarProducto(prod) {
     🍽️ Usos: ${prod.usos}<br>
     🆔 ID: ${prod.id}
   `;
-  mostrarMensaje("Mapachito", respuesta);
+
+  // Simula asincronismo con setTimeout
+  setTimeout(() => {
+    mostrarMensaje("Mapachito", respuesta);
+  }, 700); // Espera 800ms antes de mostrar el producto
 }
 
-// Mostrar mensaje y guardar en localStorage
-function mostrarMensaje(remitente, texto, guardar = true) {
-  const mensaje = document.createElement("p");
-  mensaje.classList.add(remitente);
 
-  // Insertamos el texto con los botones (si los tiene)
-  mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
-  chat.appendChild(mensaje);
-  chat.scrollTop = chat.scrollHeight; // Para hacer scroll hacia abajo
+function mostrarMensaje(remitente, texto, guardar = true, delay = 0) {
+  setTimeout(() => {
+    const mensaje = document.createElement("p");
+    mensaje.classList.add(remitente);
 
-  // Guardar en localStorage si corresponde
-  if (guardar) {
-    guardarMensajeEnLocalStorage(remitente, texto);
-  }
+    mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
+    chat.appendChild(mensaje);
+    chat.scrollTop = chat.scrollHeight;
 
-  // Si hay botones de categoría, les agregamos el evento click
-  mensaje.querySelectorAll(".categoria-boton").forEach(boton => {
-    boton.addEventListener("click", () => {
-      const categoria = boton.getAttribute("data-categoria");
-      mostrarProductosPorCategoria(categoria);
+    if (guardar) {
+      guardarMensajeEnLocalStorage(remitente, texto);
+    }
+
+    mensaje.querySelectorAll(".categoria-boton").forEach(boton => {
+      boton.addEventListener("click", () => {
+        const categoria = boton.getAttribute("data-categoria");
+        mostrarProductosPorCategoria(categoria);
+      });
     });
-  });
+  }, 200);
 }
+
 
 // Mostrar todos los productos de una categoría
 function mostrarProductosPorCategoria(categoria) {
