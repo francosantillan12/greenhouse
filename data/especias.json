@@ -1,0 +1,30 @@
+
+[
+  {
+    "id": 200,
+    "nombre": "té verde matcha",
+    "categoria": "especias",
+    "descripcion": "Polvo fino de hojas de té verde molidas, con sabor intenso y un color verde vibrante.",
+    "beneficios": "Alto en antioxidantes, mejora el metabolismo, ayuda a la concentración y a la energía sostenida.",
+    "usos": "Se consume en infusiones, smoothies, postres y como ingrediente en recetas saludables.",
+    "palabrasClave": ["té", "te", "matcha", "antioxidantes", "metabolismo", "energía", "infusión"]
+  },
+  {
+    "id": 201,
+    "nombre": "té negro earl grey",
+    "categoria": "especias",
+    "descripcion": "Té negro aromatizado con aceite de bergamota, de sabor cítrico y refrescante.",
+    "beneficios": "Ayuda a la digestión, es antioxidante y aporta un sabor único y refrescante.",
+    "usos": "Se consume solo o con leche, ideal para la tarde y momentos de relax.",
+    "palabrasClave": ["té", "te", "earl grey", "bergamota", "digestión", "antioxidantes", "infusión"]
+  },
+  {
+    "id": 202,
+    "nombre": "hibiscus en flor",
+    "categoria": "especias",
+    "descripcion": "Flores secas de hibiscus sabdariffa, conocidas por su sabor ácido y color rojo intenso. Se usan comúnmente en infusiones naturales.",
+    "beneficios": "Rico en antioxidantes, ayuda a reducir la presión arterial, mejora la salud hepática y apoya la digestión.",
+    "usos": "Se prepara como infusión caliente o fría, sola o mezclada con otras hierbas. También se puede usar en mermeladas, repostería o bebidas fermentadas como kombucha.",
+    "palabrasClave": ["hibiscus", "jamaica", "flor de hibisco", "antioxidantes", "presión arterial", "digestión", "infusión", "hierbas"]
+  }
+]

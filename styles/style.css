@@ -31,6 +31,11 @@ body {
   font-weight: 500;
 }
 
+h1 {
+  color: rgb(255, 255, 255);
+  display: flex;
+}
+
 .menu-btn {
   display: none;
   background: none;
@@ -46,6 +51,7 @@ body {
   margin-left: 2rem;
   margin-top: 2rem;
   animation: girar 15s linear infinite;
+  
 }
 
 @keyframes girar {
@@ -77,9 +83,7 @@ body {
   border-radius: 100%;
 }
 
-h1 {
-  color: rgb(0, 0, 0);
-}
+
 h2 {
   text-align: center;
   color: #030303;
