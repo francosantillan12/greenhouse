@@ -1,7 +1,10 @@
+
 // arrays globales 
 let productosHarinas = [];
 let productosSemillas = [];
 let productosEspecias = [];
+
+let cargaCompleta = false; // <-- variable para controlar carga
 
 //  para cargar cada archivo JSON
 async function cargarHarinas() {
@@ -37,11 +40,11 @@ async function cargarEspecias() {
 // Carga todos los productos al inicio
 async function inicializarProductos() {
   await Promise.all([cargarHarinas(), cargarSemillas(), cargarEspecias()]);
+  cargaCompleta = true;
+  entradaUsuario.disabled = false;
 }
 
-// Ejecutamos la carga al principio, sin bloquear la carga visual
 inicializarProductos();
-
 
 // Función para obtener el próximo ID unico global
 function obtenerProximoId() {
@@ -50,7 +53,6 @@ function obtenerProximoId() {
   return Math.max(...todosProductos.map(p => p.id)) + 1;
 }
 
-// Ejemplo: función para agregar nuevo producto automáticamente asignando ID único global
 function agregarProducto(nuevoProducto, categoriaArray) {
   const nuevoId = obtenerProximoId();
   nuevoProducto.id = nuevoId;
@@ -58,22 +60,17 @@ function agregarProducto(nuevoProducto, categoriaArray) {
   return nuevoProducto;
 }
 
-
-
 //************LOGICA*******************/
-
 const formulario = document.getElementById("formulario");
 const entradaUsuario = document.getElementById("entradaUsuario");
 const chat = document.getElementById("chat");
 
-// Objeto para acceder a cada array según su categoría
 const basePorCategoria = {
   harinas: productosHarinas,
   semillas: productosSemillas,
   especias: productosEspecias,
 };
 
-// Cargar mensajes previos desde localStorage al iniciar
 const historialGuardado = localStorage.getItem("chatHistorial");
 if (historialGuardado) {
   const mensajes = JSON.parse(historialGuardado);
@@ -94,43 +91,64 @@ if (historialGuardado) {
   );
 }
 
-formulario.addEventListener("submit", function(evento) {
+formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
   const consulta = entradaUsuario.value.toLowerCase().trim();
   if (!consulta) return;
 
-  mostrarMensaje("usuario", consulta);
+  if (!cargaCompleta) {
+    mostrarEscribiendo();
+    setTimeout(() => {
+      eliminarEscribiendo();
+      mostrarMensaje("Mapachito", "⏳ Estoy cargando los productos, por favor esperá un momento...", true);
+    }, 1000);
+    return;
+  }
 
-  // IMPORTANTE: Si los arrays están vacíos (porque la carga no terminó), no bloqueamos ni mostramos nada raro.
-  // Simplemente usamos los arrays (que se llenarán luego si no están aún).
+  mostrarMensaje("usuario", consulta);
 
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
   const productoExacto = baseDeDatos.find(p => consulta === p.nombre.toLowerCase());
 
   if (productoExacto) {
-    // Mostrar producto con delay para simular "pensamiento"
-    mostrarProducto(productoExacto);
+    mostrarEscribiendo();
+    setTimeout(() => {
+      eliminarEscribiendo();
+      mostrarProducto(productoExacto);
+    }, 1000);
   } else {
     const categoriaBuscada = baseDeDatos.filter(p => p.categoria === consulta);
 
     if (categoriaBuscada.length > 0) {
-      mostrarMensaje("Mapachito", `Productos en la categoría "${consulta}":`, true, 500);
-      categoriaBuscada.forEach((p, i) => {
-        // Muestra cada producto con un pequeño delay escalonado para mejor efecto
-        setTimeout(() => mostrarProducto(p), 700 * (i + 1));
-      });
+      mostrarEscribiendo();
+      setTimeout(() => {
+        eliminarEscribiendo();
+        mostrarMensaje("Mapachito", `Productos en la categoría "${consulta}":`, true);
+        categoriaBuscada.forEach((p, i) => {
+          setTimeout(() => mostrarProducto(p), 700 * (i + 1));
+        });
+      }, 1000);
     } else {
       const productosRelacionados = baseDeDatos.filter(p =>
-        p.palabrasClave.some(palabra => palabra.toLowerCase() === consulta)
+        p.palabrasClave.some(palabra => palabra.toLowerCase().includes(consulta))
+
       );
 
       if (productosRelacionados.length > 0) {
-        mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:", true, 500);
-        productosRelacionados.forEach((p, i) => {
-          setTimeout(() => mostrarProducto(p), 700 * (i + 1));
-        });
+        mostrarEscribiendo();
+        setTimeout(() => {
+          eliminarEscribiendo();
+          mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:", true);
+          productosRelacionados.forEach((p, i) => {
+            setTimeout(() => mostrarProducto(p), 700 * (i + 1));
+          });
+        }, 1000);
       } else {
-        mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.", true, 500);
+        mostrarEscribiendo();
+        setTimeout(() => {
+          eliminarEscribiendo();
+          mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.", true);
+        }, 1000);
       }
     }
   }
@@ -138,28 +156,26 @@ formulario.addEventListener("submit", function(evento) {
   entradaUsuario.value = "";
 });
 
-
+//Funcion donde debo agregar las "categorias" para que se vean en el chat
 function mostrarProducto(prod) {
   const respuesta = `
     <strong>${prod.nombre.toUpperCase()}</strong><br>
     📝 ${prod.descripcion}<br>
     ✅ Beneficios: ${prod.beneficios}<br>
     🍽️ Usos: ${prod.usos}<br>
+    💲 Precio: $${Number(prod.precio).toFixed(2)}<br>
     🆔 ID: ${prod.id}
   `;
 
-  // Simula asincronismo con setTimeout
   setTimeout(() => {
     mostrarMensaje("Mapachito", respuesta);
   }, 700);
 }
 
-
 function mostrarMensaje(remitente, texto, guardar = true, delay = 0) {
   setTimeout(() => {
     const mensaje = document.createElement("p");
     mensaje.classList.add(remitente);
-
     mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
     chat.appendChild(mensaje);
     chat.scrollTop = chat.scrollHeight;
@@ -177,20 +193,22 @@ function mostrarMensaje(remitente, texto, guardar = true, delay = 0) {
   }, delay || 200);
 }
 
-// Mostrar todos los productos de una categoría
 function mostrarProductosPorCategoria(categoria) {
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
   const productos = baseDeDatos.filter(p => p.categoria === categoria);
 
   if (productos.length > 0) {
-    mostrarMensaje("Mapachito", `Estos son los productos en la categoría "${categoria}":`);
-    productos.forEach(p => mostrarProducto(p));
+    mostrarEscribiendo();
+    setTimeout(() => {
+      eliminarEscribiendo();
+      mostrarMensaje("Mapachito", `Estos son los productos en la categoría "${categoria}":`);
+      productos.forEach(p => mostrarProducto(p));
+    }, 1000);
   } else {
     mostrarMensaje("Mapachito", `No encontré productos para la categoría "${categoria}".`);
   }
 }
 
-// Guardar mensaje en localStorage
 function guardarMensajeEnLocalStorage(remitente, texto) {
   let historial = localStorage.getItem("chatHistorial");
   historial = historial ? JSON.parse(historial) : [];
@@ -198,30 +216,72 @@ function guardarMensajeEnLocalStorage(remitente, texto) {
   localStorage.setItem("chatHistorial", JSON.stringify(historial));
 }
 
-// Botón borrar historial
 const botonBorrarHistorial = document.getElementById("borrarHistorial");
 
 botonBorrarHistorial.addEventListener("click", function () {
   Swal.fire({
-    title: '¿Estás seguro?',
-    text: "¡Esto borrará todo el historial del chat!",
+    title: '🗑️ ¿Borrar todo?',
+    html: '<strong>Se eliminará el historial del chat.</strong><br>Esta acción no se puede deshacer.',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, borrar',
-    cancelButtonText: 'Cancelar'
+    cancelButtonText: 'Cancelar',
+    background: '#fffbe6',
+    color: '#1f1f1f',
+    iconColor: '#e6b800',
+    confirmButtonColor: '#e6b800',
+    cancelButtonColor: '#999',
+    customClass: {
+      popup: 'swal2-rounded',
+      confirmButton: 'swal2-confirm-custom',
+      cancelButton: 'swal2-cancel-custom'
+    }
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem("chatHistorial");
       chat.innerHTML = "";
       console.clear();
 
-      Swal.fire(
-        '¡Borrado!',
-        'El historial del chat fue eliminado.',
-        'success'
-      );
+      Swal.fire({
+        title: '✅ ¡Listo!',
+        text: 'El historial fue eliminado.',
+        icon: 'success',
+        background: '#fffbe6',
+        color: '#1f1f1f',
+        confirmButtonColor: '#e6b800',
+        iconColor: '#70c070'
+      }).then(() => {
+        // Mensaje de bienvenida con categorías
+        mostrarMensaje(
+          "Mapachito",
+          `¡Hola de nuevo! Soy Mapachito y estoy acá para ayudarte. 
+           Ingresá el nombre del producto que estás buscando o clickea la categoría que te interese:
+           <div class="contenedor-categorias">
+             <button class="categoria-boton" data-categoria="harinas">Harinas</button>
+             <button class="categoria-boton" data-categoria="semillas">Semillas</button>
+             <button class="categoria-boton" data-categoria="especias">Especias</button>
+           </div>`,
+          false
+        );
+      });
     }
   });
 });
+
+
+// FUNCIONES AGREGADAS para “escribiendo...”
+function mostrarEscribiendo() {
+  const escribiendo = document.createElement("p");
+  escribiendo.classList.add("mapachito", "mensaje-escribiendo");
+  escribiendo.id = "mapachito-escribiendo";
+  escribiendo.innerHTML = `<span class="mapachito">🦝 Mapachito:</span> escribiendo...`;
+  chat.appendChild(escribiendo);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function eliminarEscribiendo() {
+  const escribiendo = document.getElementById("mapachito-escribiendo");
+  if (escribiendo) {
+    escribiendo.remove();
+  }
+}

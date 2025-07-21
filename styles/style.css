@@ -4,7 +4,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 /* HEADER */
 .encabezado {
   display: flex;
@@ -263,6 +262,91 @@ button {
   transform: scale(1.2);
 }
 
+
+/*SECCION "SEMILLAS"*/
+
+.contenedor-semillas {
+  max-width: 900px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 productos por fila */
+  gap: 20px;
+  padding: 20px;
+  /*grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));*/
+  /*gap: 25px;
+  padding: 0 20px;*/
+
+}
+
+.card-semilla {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.img-semilla {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.btn-agregar {
+  margin-top: auto;
+  padding: 10px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-agregar:hover {
+  background-color: #45a049;
+}
+
+
+
+.swal2-popup.swal2-rounded {
+  border-radius: 1.2rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.swal2-confirm-custom {
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: bold;
+  background-color: #e6b800 !important;
+  color: #fff !important;
+}
+
+.swal2-cancel-custom {
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: #aaa !important;
+  color: #fff !important;
+}
+
+
+.mensaje-escribiendo {
+  font-style: italic;
+  opacity: 0.7;
+  animation: aparecerDesaparecer 1.5s infinite;
+}
+
+@keyframes aparecerDesaparecer {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .navbar {
@@ -287,3 +371,4 @@ button {
     display: block;
   }
 }
+
