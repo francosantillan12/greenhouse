@@ -1,12 +1,16 @@
-
-// arrays globales 
+// *****************************************************
+//                ARRAYS GLOBALES
+// *****************************************************
 let productosHarinas = [];
 let productosSemillas = [];
 let productosEspecias = [];
+let productosCondimentos = [];
 
-let cargaCompleta = false; // <-- variable para controlar carga
+let cargaCompleta = false; // Controla la carga de productos
 
-//  para cargar cada archivo JSON
+// *****************************************************
+//        FUNCIONES PARA CARGAR JSON DE PRODUCTOS
+// *****************************************************
 async function cargarHarinas() {
   try {
     const respuesta = await fetch('./data/harinas.json');
@@ -37,18 +41,33 @@ async function cargarEspecias() {
   }
 }
 
-// Carga todos los productos al inicio
+async function cargarCondimentos() {
+  try {
+    const respuesta = await fetch('./data/condimentos.json'); 
+    productosCondimentos = await respuesta.json();
+  } catch (error) {
+    console.error("Error al cargar los condimentos:", error);
+    Swal.fire("Error", "No se pudieron cargar los condimentos", "error");
+  }
+}
+
+
+// *****************************************************
+//          INICIALIZAR TODOS LOS PRODUCTOS
+// *****************************************************
 async function inicializarProductos() {
-  await Promise.all([cargarHarinas(), cargarSemillas(), cargarEspecias()]);
+  await Promise.all([cargarHarinas(), cargarSemillas(), cargarEspecias(), cargarCondimentos()]);
   cargaCompleta = true;
   entradaUsuario.disabled = false;
 }
 
 inicializarProductos();
 
-// Función para obtener el próximo ID unico global
+// *****************************************************
+//   FUNCIONES AUXILIARES PARA GESTIONAR PRODUCTOS
+// *****************************************************
 function obtenerProximoId() {
-  const todosProductos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
+  const todosProductos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
   if (todosProductos.length === 0) return 0;
   return Math.max(...todosProductos.map(p => p.id)) + 1;
 }
@@ -60,7 +79,9 @@ function agregarProducto(nuevoProducto, categoriaArray) {
   return nuevoProducto;
 }
 
-//************LOGICA*******************/
+// *****************************************************
+//              VARIABLES DEL DOM
+// *****************************************************
 const formulario = document.getElementById("formulario");
 const entradaUsuario = document.getElementById("entradaUsuario");
 const chat = document.getElementById("chat");
@@ -69,8 +90,12 @@ const basePorCategoria = {
   harinas: productosHarinas,
   semillas: productosSemillas,
   especias: productosEspecias,
+  condimentos: productosCondimentos,
 };
 
+// *****************************************************
+//    CARGAR HISTORIAL GUARDADO EN LOCALSTORAGE
+// *****************************************************
 const historialGuardado = localStorage.getItem("chatHistorial");
 if (historialGuardado) {
   const mensajes = JSON.parse(historialGuardado);
@@ -91,6 +116,56 @@ if (historialGuardado) {
   );
 }
 
+// *****************************************************
+//    FUNCIONES PARA NORMALIZAR Y DETECTAR ERRORES
+// *****************************************************
+// NUEVO: Esta función elimina acentos y pasa todo a minúsculas
+function normalizarTexto(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+// NUEVO: Calcula la distancia de Levenshtein (para detectar palabras parecidas)
+function calcularDistancia(a, b) {
+  const matrix = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+  for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      const costo = a[i - 1] === b[j - 1] ? 0 : 1;
+      matrix[i][j] = Math.min(
+        matrix[i - 1][j] + 1,
+        matrix[i][j - 1] + 1,
+        matrix[i - 1][j - 1] + costo
+      );
+    }
+  }
+  return matrix[a.length][b.length];
+}
+
+// NUEVO: Busca un producto con un nombre parecido
+function buscarProductoSimilar(consulta, baseDeDatos) {
+  const consultaNorm = normalizarTexto(consulta);
+  let mejorCoincidencia = null;
+  let menorDistancia = Infinity;
+
+  baseDeDatos.forEach((producto) => {
+    const nombreNorm = normalizarTexto(producto.nombre);
+    const distancia = calcularDistancia(consultaNorm, nombreNorm);
+    if (distancia < menorDistancia && distancia <= 3) { // hasta 3 cambios
+      menorDistancia = distancia;
+      mejorCoincidencia = producto;
+    }
+  });
+
+  return mejorCoincidencia;
+}
+
+// *****************************************************
+//             EVENTO PRINCIPAL DEL FORM
+// *****************************************************
 formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
   const consulta = entradaUsuario.value.toLowerCase().trim();
@@ -107,56 +182,71 @@ formulario.addEventListener("submit", function (evento) {
 
   mostrarMensaje("usuario", consulta);
 
-  const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
-  const productoExacto = baseDeDatos.find(p => consulta === p.nombre.toLowerCase());
+  const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
 
-  if (productoExacto) {
+  // --- NUEVO: Dividir en partes por coma o 'y'
+  const partesConsulta = consulta
+    .split(/,| y | e /i)
+    .map(t => normalizarTexto(t))
+    .filter(Boolean);
+
+  let productosEncontrados = [];
+
+  // Buscar cada parte por coincidencia exacta o parecida
+  partesConsulta.forEach(parte => {
+    let producto = baseDeDatos.find(p => normalizarTexto(p.nombre) === parte);
+    if (!producto) {
+      producto = buscarProductoSimilar(parte, baseDeDatos);
+    }
+    if (producto && !productosEncontrados.includes(producto)) {
+      productosEncontrados.push(producto);
+    }
+  });
+
+  if (productosEncontrados.length > 0) {
     mostrarEscribiendo();
     setTimeout(() => {
       eliminarEscribiendo();
-      mostrarProducto(productoExacto);
+      if (productosEncontrados.length > 1) {
+        mostrarMensaje("Mapachito", "🔎 Encontré los siguientes productos relacionados:", true);
+      }
+      productosEncontrados.forEach((p, i) => {
+        setTimeout(() => mostrarProducto(p), 700 * (i + 1));
+      });
     }, 1000);
   } else {
-    const categoriaBuscada = baseDeDatos.filter(p => p.categoria === consulta);
+    // Si no se encontraron productos, buscar por palabras clave
+    const relacionados = baseDeDatos.filter(p =>
+      p.palabrasClave.some(palabra =>
+        normalizarTexto(palabra).includes(normalizarTexto(consulta))
+      )
+    );
 
-    if (categoriaBuscada.length > 0) {
+    if (relacionados.length > 0) {
       mostrarEscribiendo();
       setTimeout(() => {
         eliminarEscribiendo();
-        mostrarMensaje("Mapachito", `Productos en la categoría "${consulta}":`, true);
-        categoriaBuscada.forEach((p, i) => {
+        mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:", true);
+        relacionados.forEach((p, i) => {
           setTimeout(() => mostrarProducto(p), 700 * (i + 1));
         });
       }, 1000);
     } else {
-      const productosRelacionados = baseDeDatos.filter(p =>
-        p.palabrasClave.some(palabra => palabra.toLowerCase().includes(consulta))
-
-      );
-
-      if (productosRelacionados.length > 0) {
-        mostrarEscribiendo();
-        setTimeout(() => {
-          eliminarEscribiendo();
-          mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:", true);
-          productosRelacionados.forEach((p, i) => {
-            setTimeout(() => mostrarProducto(p), 700 * (i + 1));
-          });
-        }, 1000);
-      } else {
-        mostrarEscribiendo();
-        setTimeout(() => {
-          eliminarEscribiendo();
-          mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.", true);
-        }, 1000);
-      }
+      mostrarEscribiendo();
+      setTimeout(() => {
+        eliminarEscribiendo();
+        mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.", true);
+      }, 1000);
     }
   }
 
   entradaUsuario.value = "";
 });
 
-//Funcion donde debo agregar las "categorias" para que se vean en el chat
+
+// *****************************************************
+//          FUNCIONES DE INTERFAZ DEL CHAT
+// *****************************************************
 function mostrarProducto(prod) {
   const respuesta = `
     <strong>${prod.nombre.toUpperCase()}</strong><br>
@@ -194,7 +284,7 @@ function mostrarMensaje(remitente, texto, guardar = true, delay = 0) {
 }
 
 function mostrarProductosPorCategoria(categoria) {
-  const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias];
+  const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
   const productos = baseDeDatos.filter(p => p.categoria === categoria);
 
   if (productos.length > 0) {
@@ -209,6 +299,9 @@ function mostrarProductosPorCategoria(categoria) {
   }
 }
 
+// *****************************************************
+//      LOCALSTORAGE - GUARDAR HISTORIAL DEL CHAT
+// *****************************************************
 function guardarMensajeEnLocalStorage(remitente, texto) {
   let historial = localStorage.getItem("chatHistorial");
   historial = historial ? JSON.parse(historial) : [];
@@ -216,6 +309,9 @@ function guardarMensajeEnLocalStorage(remitente, texto) {
   localStorage.setItem("chatHistorial", JSON.stringify(historial));
 }
 
+// *****************************************************
+//        BORRAR HISTORIAL CON SWEETALERT
+// *****************************************************
 const botonBorrarHistorial = document.getElementById("borrarHistorial");
 
 botonBorrarHistorial.addEventListener("click", function () {
@@ -251,7 +347,6 @@ botonBorrarHistorial.addEventListener("click", function () {
         confirmButtonColor: '#e6b800',
         iconColor: '#70c070'
       }).then(() => {
-        // Mensaje de bienvenida con categorías
         mostrarMensaje(
           "Mapachito",
           `¡Hola de nuevo! Soy Mapachito y estoy acá para ayudarte. 
@@ -260,7 +355,8 @@ botonBorrarHistorial.addEventListener("click", function () {
              <button class="categoria-boton" data-categoria="harinas">Harinas</button>
              <button class="categoria-boton" data-categoria="semillas">Semillas</button>
              <button class="categoria-boton" data-categoria="especias">Especias</button>
-           </div>`,
+             <button class="categoria-boton" data-categoria="condimentos">Condimentos</button>
+             </div>`,
           false
         );
       });
@@ -268,8 +364,9 @@ botonBorrarHistorial.addEventListener("click", function () {
   });
 });
 
-
-// FUNCIONES AGREGADAS para “escribiendo...”
+// *****************************************************
+//       FUNCIONES PARA "MAPACHITO ESCRIBIENDO"
+// *****************************************************
 function mostrarEscribiendo() {
   const escribiendo = document.createElement("p");
   escribiendo.classList.add("mapachito", "mensaje-escribiendo");

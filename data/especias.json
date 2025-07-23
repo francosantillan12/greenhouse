@@ -7,7 +7,7 @@
     "descripcion": "Polvo fino de hojas de té verde molidas, con sabor intenso y un color verde vibrante.",
     "beneficios": "Alto en antioxidantes, mejora el metabolismo, ayuda a la concentración y a la energía sostenida.",
     "usos": "Se consume en infusiones, smoothies, postres y como ingrediente en recetas saludables.",
-    "palabrasClave": ["té", "te", "matcha", "antioxidantes", "metabolismo", "energía", "infusión"],
+    "palabrasClave": ["te verde","té", "te", "matcha", "antioxidantes", "metabolismo", "energía", "infusión"],
     "precio": 1500,
     "imagen": "../imagenes/especias/matcha.jpg"
   },
@@ -32,5 +32,284 @@
     "palabrasClave": ["hibiscus", "jamaica", "flor de hibisco", "antioxidantes", "presión arterial", "digestión", "infusión", "hierbas"],
     "precio": 1000,
     "imagen": "../imagenes/especias/hibiscus.jpg"
-  }
+  },
+  {
+    "id": 203,
+    "nombre": "manzanilla",
+    "categoria": "especias",
+    "descripcion": "Flores secas de manzanilla con aroma suave y sabor delicado.",
+    "beneficios": "Relajante natural, ayuda a la digestión, reduce la ansiedad y mejora el sueño.",
+    "usos": "Ideal para infusiones, compresas y productos cosméticos caseros.",
+    "palabrasClave": ["manzanilla", "digestión", "relajante", "infusión", "sueño", "calma"],
+    "precio": 900,
+    "imagen": "../imagenes/hierbas/manzanilla.jpg"
+  },
+  {
+    "id": 204,
+    "nombre": "boldo",
+    "categoria": "especias",
+    "descripcion": "Hojas secas de boldo, con sabor ligeramente amargo.",
+    "beneficios": "Favorece el funcionamiento del hígado, mejora la digestión y depura el organismo.",
+    "usos": "Ideal para infusiones digestivas y tónicos depurativos.",
+    "palabrasClave": ["boldo", "hígado", "digestión", "depurativo", "infusión"],
+    "precio": 950,
+    "imagen": "../imagenes/hierbas/boldo.jpg"
+  },
+  {
+    "id": 205,
+    "nombre": "tilo",
+    "categoria": "especias",
+    "descripcion": "Flores secas de tilo con aroma suave y propiedades relajantes.",
+    "beneficios": "Reduce el estrés, ayuda a conciliar el sueño y calma los nervios.",
+    "usos": "Se prepara en infusiones relajantes y baños de inmersión.",
+    "palabrasClave": ["hoja de tilo","hojas de tilo","tilo", "relajante", "estrés", "sueño", "infusión"],
+    "precio": 1000,
+    "imagen": "../imagenes/hierbas/tilo.jpg"
+  },
+  {
+    "id": 206,
+    "nombre": "melisa",
+    "categoria": "especias",
+    "descripcion": "Hojas secas de melisa con aroma cítrico y suave sabor.",
+    "beneficios": "Calma la ansiedad, ayuda a dormir y favorece la digestión.",
+    "usos": "Infusiones relajantes, aceites caseros y postres.",
+    "palabrasClave": ["melisa", "ansiedad", "sueño", "relajante", "digestión", "infusión"],
+    "precio": 1100,
+    "imagen": "../imagenes/hierbas/melisa.jpg"
+  },
+  {
+    "id": 207,
+    "nombre": "cola de caballo",
+    "categoria": "especias",
+    "descripcion": "Hierba seca con tallos ricos en sílice y minerales.",
+    "beneficios": "Diurética natural, fortalece uñas y cabello, y ayuda a eliminar líquidos.",
+    "usos": "Infusiones, tónicos para el cabello y tratamientos de belleza.",
+    "palabrasClave": ["cola de caballo", "diurético", "cabello", "uñas", "infusión"],
+    "precio": 1200,
+    "imagen": "../imagenes/hierbas/cola_caballo.jpg"
+  },
+  {
+    "id": 208,
+    "nombre": "valeriana",
+    "categoria": "especias",
+    "descripcion": "Raíces secas de valeriana con aroma intenso.",
+    "beneficios": "Reduce la ansiedad, combate el insomnio y relaja el sistema nervioso.",
+    "usos": "Se prepara en infusiones y extractos naturales.",
+    "palabrasClave": ["valeriana", "ansiedad", "sueño", "relajante", "infusión"],
+    "precio": 1300,
+    "imagen": "../imagenes/hierbas/valeriana.jpg"
+  },
+  {
+    "id": 209,
+    "nombre": "ajenjo",
+    "categoria": "especias",
+    "descripcion": "Hierba de sabor amargo y aroma intenso, conocida por sus propiedades digestivas y medicinales.",
+    "beneficios": "Estimula el apetito, mejora la digestión y es desparasitante natural.",
+    "usos": "Se usa en infusiones, tónicos amargos y como base para licores artesanales.",
+    "palabrasClave": ["ajenjo", "digestión", "amargo", "infusión", "hierba medicinal"],
+    "precio": 1400,
+    "imagen": "../imagenes/hierbas/ajenjo.jpg"
+  },
+  {
+    "id": 210,
+    "nombre": "caléndula en flor",
+    "categoria": "especias",
+    "descripcion": "Flores secas de caléndula con color anaranjado brillante y aroma suave.",
+    "beneficios": "Antiinflamatoria, cicatrizante y ayuda a mejorar la piel.",
+    "usos": "Se utiliza en infusiones, aceites y pomadas naturales.",
+    "palabrasClave": ["caléndula", "flor", "piel", "antiinflamatoria", "cicatrizante"],
+    "precio": 1500,
+    "imagen": "../imagenes/hierbas/calendula.jpg"
+  },
+  {
+    "id": 211,
+    "nombre": "carqueja",
+    "categoria": "especias",
+    "descripcion": "Hierba amarga tradicional, con hojas finas y alargadas.",
+    "beneficios": "Favorece el hígado, mejora la digestión y depura el organismo.",
+    "usos": "Se prepara en infusiones amargas y tónicos digestivos.",
+    "palabrasClave": ["carqueja", "hígado", "amargo", "digestión", "depurativo"],
+    "precio": 1350,
+    "imagen": "../imagenes/hierbas/carqueja.jpg"
+  },
+  {
+    "id": 212,
+    "nombre": "cedrón",
+    "categoria": "especias",
+    "descripcion": "Hojas de aroma cítrico y sabor suave, muy populares en infusiones.",
+    "beneficios": "Calma la ansiedad, mejora la digestión y relaja el sistema nervioso.",
+    "usos": "Se utiliza en infusiones, postres y bebidas naturales.",
+    "palabrasClave": ["cedrón", "digestión", "ansiedad", "infusión", "relajante"],
+    "precio": 1200,
+    "imagen": "../imagenes/hierbas/cedron.jpg"
+  },
+  {
+    "id": 204,
+    "nombre": "diente de león amargón",
+    "categoria": "especias",
+    "descripcion": "Hojas y raíces secas de diente de león, con sabor amargo y gran valor medicinal.",
+    "beneficios": "Depura el hígado, mejora la digestión y ayuda a eliminar líquidos.",
+    "usos": "Se consume en infusiones depurativas y ensaladas medicinales.",
+    "palabrasClave": ["diente de león", "hígado", "depurativo", "amargo", "infusión"],
+    "precio": 1300,
+    "imagen": "../imagenes/hierbas/diente_de_leon.jpg"
+  },
+  {
+    "id": 205,
+    "nombre": "peperina",
+    "categoria": "especias",
+    "descripcion": "Hierba serrana con aroma fresco y sabor intenso, típica del norte argentino.",
+    "beneficios": "Favorece la digestión, alivia el malestar estomacal y es refrescante.",
+    "usos": "Se usa en infusiones, mates y licores artesanales.",
+    "palabrasClave": ["menta","menta peperina","peperina", "digestión", "refrescante", "mate", "infusión"],
+    "precio": 1250,
+    "imagen": "../imagenes/hierbas/peperina.jpg"
+  },
+  {
+    "id": 207,
+    "nombre": "burrito",
+    "categoria": "especias",
+    "descripcion": "Hierba de aroma fuerte y sabor fresco, utilizada en infusiones tradicionales.",
+    "beneficios": "Favorece la digestión y tiene propiedades carminativas.",
+    "usos": "Se usa en mates, infusiones y bebidas naturales.",
+    "palabrasClave": ["te","te de burro","burrito", "digestión", "mate", "infusión", "carminativo"],
+    "precio": 1100,
+    "imagen": "../imagenes/hierbas/burrito.jpg"
+  },
+  {
+  "id": 209,
+  "nombre": "hojas de sen",
+  "categoria": "especias",
+  "descripcion": "Hojas secas de la planta sen, con propiedades laxantes naturales.",
+  "beneficios": "Favorece el tránsito intestinal, ayuda en casos de estreñimiento y depura el organismo.",
+  "usos": "Se usa en infusiones para mejorar la digestión y el tránsito intestinal.",
+  "palabrasClave": ["sen", "hojas de sen", "laxante", "digestión", "infusión"],
+  "precio": 1350,
+  "imagen": "../imagenes/hierbas/hojas_sen.jpg"
+},
+{
+  "id": 210,
+  "nombre": "lavanda",
+  "categoria": "especias",
+  "descripcion": "Flores secas de lavanda con aroma dulce y relajante.",
+  "beneficios": "Ayuda a reducir la ansiedad, mejora el sueño y tiene propiedades antiinflamatorias.",
+  "usos": "Se utiliza en infusiones, aceites esenciales, baños relajantes y repostería.",
+  "palabrasClave": ["lavanda", "relajante", "sueño", "ansiedad", "infusión"],
+  "precio": 1400,
+  "imagen": "../imagenes/hierbas/lavanda.jpg"
+},
+{
+  "id": 211,
+  "nombre": "malva",
+  "categoria": "especias",
+  "descripcion": "Flores y hojas secas de malva, con sabor suave y dulzón.",
+  "beneficios": "Calma irritaciones de garganta, es antiinflamatoria y ayuda a la digestión.",
+  "usos": "Se prepara en infusiones medicinales y cataplasmas para la piel.",
+  "palabrasClave": ["malva", "garganta", "antiinflamatoria", "infusión", "digestión"],
+  "precio": 1300,
+  "imagen": "../imagenes/hierbas/malva.jpg"
+},
+{
+  "id": 213,
+  "nombre": "moringa",
+  "categoria": "especias",
+  "descripcion": "Hojas secas de moringa, consideradas un superalimento por su alto contenido de nutrientes.",
+  "beneficios": "Rica en vitaminas, minerales y antioxidantes, fortalece el sistema inmunológico y aporta energía.",
+  "usos": "Se consume en infusiones, batidos, cápsulas y como ingrediente en recetas saludables.",
+  "palabrasClave": ["moringa", "superalimento", "antioxidantes", "energía", "vitaminas", "infusión"],
+  "precio": 1500,
+  "imagen": "../imagenes/hierbas/moringa.jpg"
+},
+{
+  "id": 214,
+  "nombre": "pétalos de rosa",
+  "categoria": "especias",
+  "descripcion": "Pétalos secos de rosa, con aroma delicado y propiedades aromáticas y cosméticas.",
+  "beneficios": "Relajante, antioxidante y ayuda a mejorar la piel.",
+  "usos": "Se usan en infusiones, baños de hierbas, cosmética natural y repostería.",
+  "palabrasClave": ["rosa", "pétalos", "aromático", "piel", "relajante"],
+  "precio": 1400,
+  "imagen": "../imagenes/hierbas/petalos_rosa.jpg"
+},
+{
+  "id": 215,
+  "nombre": "rosa mosqueta",
+  "categoria": "especias",
+  "descripcion": "Frutos secos de rosa mosqueta con sabor ligeramente ácido y dulce.",
+  "beneficios": "Rica en vitamina C, antioxidante y fortalece el sistema inmunológico.",
+  "usos": "Se usa en infusiones, mermeladas y aceites para el cuidado de la piel.",
+  "palabrasClave": ["rosa mosqueta", "vitamina C", "antioxidante", "infusión", "piel"],
+  "precio": 1600,
+  "imagen": "../imagenes/hierbas/rosa_mosqueta.jpg"
+},
+{
+  "id": 216,
+  "nombre": "salvia",
+  "categoria": "especias",
+  "descripcion": "Hojas secas de salvia con aroma intenso y propiedades medicinales.",
+  "beneficios": "Antiinflamatoria, ayuda a la digestión y calma la garganta.",
+  "usos": "Se utiliza en infusiones, condimentos, enjuagues bucales y tratamientos naturales.",
+  "palabrasClave": ["salvia", "digestión", "antiinflamatoria", "garganta", "infusión"],
+  "precio": 1300,
+  "imagen": "../imagenes/hierbas/salvia.jpg"
+},
+{
+  "id": 217,
+  "nombre": "stevia en hojas",
+  "categoria": "especias",
+  "descripcion": "Hojas secas de stevia, endulzante natural sin calorías.",
+  "beneficios": "Endulza naturalmente, apta para diabéticos y no altera los niveles de azúcar en sangre.",
+  "usos": "Se usa en infusiones, postres, bebidas y como sustituto del azúcar.",
+  "palabrasClave": ["stevia", "endulzante", "natural", "diabéticos", "infusión"],
+  "precio": 1550,
+  "imagen": "../imagenes/hierbas/stevia_hojas.jpg"
+},
+{
+  "id": 218,
+  "nombre": "té negro",
+  "categoria": "especias",
+  "descripcion": "Hojas de té negro fermentadas, con sabor intenso y aromático.",
+  "beneficios": "Aporta energía, mejora la concentración y es rico en antioxidantes.",
+  "usos": "Se consume en infusiones calientes, blends y como base para bebidas frías.",
+  "palabrasClave": ["té negro", "te negro", "antioxidantes", "energía", "infusión"],
+  "precio": 1450,
+  "imagen": "../imagenes/hierbas/te_negro.jpg"
+},
+{
+  "id": 219,
+  "nombre": "té rojo",
+  "categoria": "especias",
+  "descripcion": "Hojas de té rojo pu-erh fermentadas con un sabor terroso y suave.",
+  "beneficios": "Favorece la digestión, ayuda al metabolismo y reduce el colesterol.",
+  "usos": "Se prepara en infusiones y se combina con hierbas o frutas.",
+  "palabrasClave": ["té rojo", "te rojo", "digestión", "metabolismo", "infusión"],
+  "precio": 1500,
+  "imagen": "../imagenes/hierbas/te_rojo.jpg"
+},
+{
+  "id": 220,
+  "nombre": "té verde",
+  "categoria": "especias",
+  "descripcion": "Hojas de té verde con sabor fresco y suave, no fermentadas.",
+  "beneficios": "Rico en antioxidantes, mejora el metabolismo y ayuda a la concentración.",
+  "usos": "Se consume en infusiones, smoothies y mezclas con hierbas.",
+  "palabrasClave": ["té verde", "te verde", "antioxidantes", "metabolismo", "infusión"],
+  "precio": 1400,
+  "imagen": "../imagenes/hierbas/te_verde.jpg"
+},
+{
+  "id": 221,
+  "nombre": "menta piperita",
+  "categoria": "especias",
+  "descripcion": "Hojas secas de menta piperita con aroma intenso y fresco.",
+  "beneficios": "Alivia problemas digestivos, refresca el aliento y reduce dolores de cabeza.",
+  "usos": "Se usa en infusiones, postres, cócteles y aceites naturales.",
+  "palabrasClave": ["menta piperita", "menta", "digestión", "refrescante", "infusión"],
+  "precio": 1300,
+  "imagen": "../imagenes/hierbas/menta_piperita.jpg"
+}
+
+
+
+
 ]

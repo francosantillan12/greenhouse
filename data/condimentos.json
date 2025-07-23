@@ -1,0 +1,1099 @@
+[
+    {
+        "id": 300,
+        "nombre": "adobo para pizza",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de especias y hierbas aromáticas ideal para dar sabor a pizzas y salsas.",
+        "beneficios": "Aporta aroma, sabor y realza el gusto de las comidas sin necesidad de sal extra.",
+        "usos": "Se utiliza en pizzas, salsas de tomate, carnes y pastas.",
+        "palabrasClave": [
+            "adobo",
+            "pizza",
+            "condimento",
+            "especias",
+            "salsas"
+        ],
+        "precio": 700,
+        "imagen": "../imagenes/condimentos/adobo_pizza.jpg"
+    },
+    {
+        "id": 301,
+        "nombre": "ají molido",
+        "categoria": "condimentos",
+        "descripcion": "Ají seco triturado con sabor picante característico.",
+        "beneficios": "Estimula el apetito, favorece la circulación y aporta sabor intenso.",
+        "usos": "Se usa en guisos, carnes, empanadas y adobos caseros.",
+        "palabrasClave": [
+            "ají molido",
+            "condimento",
+            "picante",
+            "especias"
+        ],
+        "precio": 800,
+        "imagen": "../imagenes/condimentos/aji_molido.jpg"
+    },
+    {
+        "id": 302,
+        "nombre": "ajinomoto",
+        "categoria": "condimentos",
+        "descripcion": "Glutamato monosódico, utilizado como realzador de sabor en diversas preparaciones.",
+        "beneficios": "Potencia el sabor de los alimentos y resalta el gusto umami.",
+        "usos": "Ideal para sopas, caldos, salsas y comidas orientales.",
+        "palabrasClave": [
+            "ajinomoto",
+            "umami",
+            "condimento",
+            "realzador de sabor"
+        ],
+        "precio": 900,
+        "imagen": "../imagenes/condimentos/ajinomoto.jpg"
+    },
+    {
+        "id": 303,
+        "nombre": "ajo en polvo",
+        "categoria": "condimentos",
+        "descripcion": "Ajo deshidratado y molido, con sabor intenso y aroma característico.",
+        "beneficios": "Potencia el sabor de las comidas y aporta propiedades antibacterianas.",
+        "usos": "Ideal para carnes, salsas, adobos y sopas.",
+        "palabrasClave": [
+            "ajo",
+            "ajo en polvo",
+            "condimento",
+            "sabor",
+            "adobo"
+        ],
+        "precio": 850,
+        "imagen": "../imagenes/condimentos/ajo_polvo.jpg"
+    },
+    {
+        "id": 304,
+        "nombre": "ajo granulado",
+        "categoria": "condimentos",
+        "descripcion": "Ajo deshidratado en gránulos, con aroma y sabor concentrados.",
+        "beneficios": "Realza el sabor de las comidas y tiene propiedades antioxidantes.",
+        "usos": "Se utiliza en carnes, guisos, marinadas y salsas.",
+        "palabrasClave": [
+            "ajo",
+            "ajo granulado",
+            "condimento",
+            "especia",
+            "adobo"
+        ],
+        "precio": 900,
+        "imagen": "../imagenes/condimentos/ajo_granulado.jpg"
+    },
+    {
+        "id": 305,
+        "nombre": "albahaca",
+        "categoria": "condimentos",
+        "descripcion": "Hojas secas de albahaca con aroma fresco y sabor dulce.",
+        "beneficios": "Favorece la digestión, tiene propiedades antiinflamatorias y antioxidantes.",
+        "usos": "Se usa en pizzas, salsas, pastas y ensaladas.",
+        "palabrasClave": [
+            "albahaca",
+            "hierba",
+            "pizza",
+            "condimento",
+            "pasta"
+        ],
+        "precio": 780,
+        "imagen": "../imagenes/condimentos/albahaca.jpg"
+    },
+    {
+        "id": 306,
+        "nombre": "algas",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de algas marinas secas, rica en minerales y con sabor umami.",
+        "beneficios": "Aporta yodo, vitaminas y minerales, además de potenciar el sabor de los platos.",
+        "usos": "Se utiliza en sopas, arroces, sushi y caldos.",
+        "palabrasClave": [
+            "algas",
+            "marinas",
+            "umami",
+            "condimento",
+            "sushi"
+        ],
+        "precio": 1500,
+        "imagen": "../imagenes/condimentos/algas.jpg"
+    },
+    {
+        "id": 307,
+        "nombre": "anís estrellado",
+        "categoria": "condimentos",
+        "descripcion": "Especia aromática con forma de estrella y sabor dulce y anisado.",
+        "beneficios": "Favorece la digestión, ayuda a aliviar gases y es antioxidante.",
+        "usos": "Se usa en infusiones, postres, carnes y salsas.",
+        "palabrasClave": [
+            "anis",
+            "anís estrellado",
+            "especia",
+            "condimento",
+            "infusión"
+        ],
+        "precio": 1200,
+        "imagen": "../imagenes/condimentos/anis_estrellado.jpg"
+    },
+    {
+        "id": 308,
+        "nombre": "bouquet de pimientas",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla gourmet de pimientas en grano: negra, rosa, verde y pimienta de Jamaica, con un aroma y sabor únicos.",
+        "beneficios": "Aporta un sabor complejo, estimula la digestión y es antioxidante.",
+        "usos": "Ideal para condimentar carnes, pastas, salsas y platos gourmet. Se puede moler o usar en grano.",
+        "palabrasClave": [
+            "pimienta",
+            "pimientas",
+            "bouquet",
+            "mezcla",
+            "pimienta negra",
+            "pimienta rosa",
+            "pimienta verde",
+            "pimienta jamaica"
+        ],
+        "precio": 1600,
+        "imagen": "../imagenes/condimentos/bouquet_pimientas.jpg"
+    },
+    {
+        "id": 309,
+        "nombre": "caldo de verdura sin sal",
+        "categoria": "condimentos",
+        "descripcion": "Caldo de verdura en polvo, sin sal agregada, ideal para dar sabor de forma natural.",
+        "beneficios": "Aporta sabor sin sodio, ideal para dietas hiposódicas.",
+        "usos": "Se utiliza en sopas, guisos, arroz y salsas.",
+        "palabrasClave": [
+            "caldo",
+            "caldo de verdura",
+            "sin sal",
+            "sopas",
+            "condimento"
+        ],
+        "precio": 950,
+        "imagen": "../imagenes/condimentos/caldo_verdura_sin_sal.jpg"
+    },
+    {
+        "id": 310,
+        "nombre": "caldo de verdura con sal",
+        "categoria": "condimentos",
+        "descripcion": "Caldo de verdura en polvo, con el punto justo de sal, para saborizar comidas.",
+        "beneficios": "Saboriza los platos sin necesidad de agregar sal extra.",
+        "usos": "Ideal para sopas, guisos, pastas y risottos.",
+        "palabrasClave": [
+            "caldo",
+            "caldo de verdura",
+            "con sal",
+            "sopas",
+            "condimento"
+        ],
+        "precio": 900,
+        "imagen": "../imagenes/condimentos/caldo_verdura_con_sal.jpg"
+    },
+    {
+        "id": 311,
+        "nombre": "cebolla crispy",
+        "categoria": "condimentos",
+        "descripcion": "Cebolla crocante y deshidratada, con un sabor dulce y tostado.",
+        "beneficios": "Aporta textura crujiente y un sabor intenso sin necesidad de freír.",
+        "usos": "Se usa para decorar ensaladas, hamburguesas, sopas y guisos.",
+        "palabrasClave": [
+            "cebolla",
+            "crispy",
+            "cebolla crispy",
+            "crocante",
+            "condimento"
+        ],
+        "precio": 1300,
+        "imagen": "../imagenes/condimentos/cebolla_crispy.jpg"
+    },
+    {
+        "id": 312,
+        "nombre": "cebolla en polvo",
+        "categoria": "condimentos",
+        "descripcion": "Cebolla deshidratada y molida, con sabor intenso y versátil.",
+        "beneficios": "Saboriza sin necesidad de cebolla fresca y aporta aroma dulce.",
+        "usos": "Se utiliza en sopas, salsas, guisos y adobos.",
+        "palabrasClave": [
+            "cebolla",
+            "cebolla en polvo",
+            "condimento",
+            "sabor"
+        ],
+        "precio": 950,
+        "imagen": "../imagenes/condimentos/cebolla_polvo.jpg"
+    },
+    {
+        "id": 313,
+        "nombre": "cebolla en escamas",
+        "categoria": "condimentos",
+        "descripcion": "Cebolla deshidratada en escamas, con sabor dulce y aroma suave.",
+        "beneficios": "Ideal para dar sabor sin necesidad de cortar cebolla fresca.",
+        "usos": "Se utiliza en sopas, ensaladas, salsas y panificados.",
+        "palabrasClave": [
+            "cebolla",
+            "cebolla en escamas",
+            "condimento",
+            "sabor"
+        ],
+        "precio": 1000,
+        "imagen": "../imagenes/condimentos/cebolla_escamas.jpg"
+    },
+    {
+        "id": 314,
+        "nombre": "chimichurri",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla tradicional de especias y hierbas para preparar chimichurri casero.",
+        "beneficios": "Saboriza carnes y es una base perfecta para aderezos argentinos.",
+        "usos": "Ideal para carnes asadas, salsas, marinadas y guarniciones.",
+        "palabrasClave": [
+            "chimichurri",
+            "adobo",
+            "asado",
+            "condimento",
+            "hierbas"
+        ],
+        "precio": 1200,
+        "imagen": "../imagenes/condimentos/chimichurri.jpg"
+    },
+    {
+        "id": 315,
+        "nombre": "clavo de olor entero",
+        "categoria": "condimentos",
+        "descripcion": "Clavos de olor enteros, especia de aroma dulce y penetrante.",
+        "beneficios": "Es antioxidante, ayuda a la digestión y se usa como analgésico natural.",
+        "usos": "Se utiliza en infusiones, dulces, guisos y licores.",
+        "palabrasClave": [
+            "clavo",
+            "clavo de olor",
+            "entero",
+            "condimento",
+            "especia"
+        ],
+        "precio": 1250,
+        "imagen": "../imagenes/condimentos/clavo_olor_entero.jpg"
+    },
+    {
+        "id": 316,
+        "nombre": "comino en grano",
+        "categoria": "condimentos",
+        "descripcion": "Semillas de comino enteras, con sabor cálido e intenso, muy usado en gastronomía.",
+        "beneficios": "Favorece la digestión, es antioxidante y ayuda a reducir la inflamación.",
+        "usos": "Ideal para guisos, carnes, panes, sopas y adobos caseros.",
+        "palabrasClave": [
+            "comino",
+            "comino en grano",
+            "especia",
+            "condimento",
+            "guisos"
+        ],
+        "precio": 1100,
+        "imagen": "../imagenes/condimentos/comino_grano.jpg"
+    },
+    {
+        "id": 317,
+        "nombre": "comino molido",
+        "categoria": "condimentos",
+        "descripcion": "Comino en polvo con sabor cálido, aromático e intenso.",
+        "beneficios": "Favorece la digestión, es antioxidante y ayuda a reducir la inflamación.",
+        "usos": "Se utiliza en guisos, carnes, salsas, adobos y panificación.",
+        "palabrasClave": [
+            "comino",
+            "comino molido",
+            "especia",
+            "condimento",
+            "guisos"
+        ],
+        "precio": 1150,
+        "imagen": "../imagenes/condimentos/comino_molido.jpg"
+    },
+    {
+        "id": 318,
+        "nombre": "condimento para arroz",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de especias diseñada para realzar el sabor del arroz.",
+        "beneficios": "Saboriza de forma natural sin necesidad de agregar aditivos.",
+        "usos": "Ideal para paellas, risottos y salteados de arroz.",
+        "palabrasClave": [
+            "condimento",
+            "arroz",
+            "mezcla",
+            "especias"
+        ],
+        "precio": 950,
+        "imagen": "../imagenes/condimentos/condimento_arroz.jpg"
+    },
+    {
+        "id": 319,
+        "nombre": "coriandro en grano",
+        "categoria": "condimentos",
+        "descripcion": "Semillas de coriandro enteras, con aroma cítrico y dulce.",
+        "beneficios": "Favorece la digestión, es antioxidante y antiinflamatorio.",
+        "usos": "Se usa en carnes, encurtidos, sopas y currys.",
+        "palabrasClave": [
+            "coriandro",
+            "cilantro",
+            "en grano",
+            "condimento",
+            "especia"
+        ],
+        "precio": 1200,
+        "imagen": "../imagenes/condimentos/coriandro_grano.jpg"
+    },
+    {
+        "id": 320,
+        "nombre": "coriandro molido",
+        "categoria": "condimentos",
+        "descripcion": "Coriandro molido con aroma dulce y sabor suave.",
+        "beneficios": "Ayuda a la digestión y aporta antioxidantes naturales.",
+        "usos": "Ideal para currys, guisos, salsas y panificación.",
+        "palabrasClave": [
+            "coriandro",
+            "cilantro",
+            "molido",
+            "condimento",
+            "especia"
+        ],
+        "precio": 1250,
+        "imagen": "../imagenes/condimentos/coriandro_molido.jpg"
+    },
+    {
+        "id": 321,
+        "nombre": "couscous",
+        "categoria": "condimentos",
+        "descripcion": "Sémola de trigo precocida, de rápida preparación y sabor suave.",
+        "beneficios": "Fuente de energía y carbohidratos, fácil de digerir.",
+        "usos": "Se usa como base en ensaladas, guarniciones y platos orientales.",
+        "palabrasClave": [
+            "couscous",
+            "sémola",
+            "guarnición",
+            "oriental"
+        ],
+        "precio": 900,
+        "imagen": "../imagenes/condimentos/couscous.jpg"
+    },
+    {
+        "id": 322,
+        "nombre": "cúrcuma",
+        "categoria": "condimentos",
+        "descripcion": "Raíz de cúrcuma molida, con color amarillo intenso y aroma terroso.",
+        "beneficios": "Antiinflamatoria, antioxidante y favorece la digestión.",
+        "usos": "Ideal para currys, sopas, arroces y bebidas saludables.",
+        "palabrasClave": [
+            "cúrcuma",
+            "turmeric",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1000,
+        "imagen": "../imagenes/condimentos/curcuma.jpg"
+    },
+    {
+        "id": 323,
+        "nombre": "curry hot",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de especias con sabor picante, típica de la cocina india.",
+        "beneficios": "Aporta antioxidantes y mejora la digestión.",
+        "usos": "Se usa en carnes, arroces, sopas y guisos picantes.",
+        "palabrasClave": [
+            "curry",
+            "hot",
+            "picante",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1200,
+        "imagen": "../imagenes/condimentos/curry_hot.jpg"
+    },
+    {
+        "id": 324,
+        "nombre": "curry india",
+        "categoria": "condimentos",
+        "descripcion": "Curry tradicional indio con mezcla equilibrada de especias aromáticas.",
+        "beneficios": "Aporta sabor exótico y propiedades antioxidantes.",
+        "usos": "Ideal para carnes, vegetales, sopas y arroces.",
+        "palabrasClave": [
+            "curry",
+            "india",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1250,
+        "imagen": "../imagenes/condimentos/curry_india.jpg"
+    },
+    {
+        "id": 325,
+        "nombre": "curry para pescado",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de curry especialmente formulada para realzar el sabor de pescados y mariscos.",
+        "beneficios": "Aporta sabor sin opacar el gusto del pescado.",
+        "usos": "Se usa en guisos, salsas y marinadas de pescado.",
+        "palabrasClave": [
+            "curry",
+            "pescado",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1300,
+        "imagen": "../imagenes/condimentos/curry_pescado.jpg"
+    },
+    {
+        "id": 326,
+        "nombre": "espinaca",
+        "categoria": "condimentos",
+        "descripcion": "Hojas de espinaca deshidratada, ricas en nutrientes y sabor suave.",
+        "beneficios": "Rica en hierro, vitaminas y antioxidantes.",
+        "usos": "Se utiliza en sopas, pastas, salsas y rellenos.",
+        "palabrasClave": [
+            "espinaca",
+            "hojas",
+            "condimento",
+            "verdura"
+        ],
+        "precio": 950,
+        "imagen": "../imagenes/condimentos/espinaca.jpg"
+    },
+    {
+        "id": 327,
+        "nombre": "estragón",
+        "categoria": "condimentos",
+        "descripcion": "Hierba aromática de sabor anisado y fresco.",
+        "beneficios": "Favorece la digestión y aporta antioxidantes.",
+        "usos": "Ideal para salsas, pollo, pescado y vinagretas.",
+        "palabrasClave": [
+            "estragón",
+            "hierba",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1100,
+        "imagen": "../imagenes/condimentos/estragon.jpg"
+    },
+    {
+        "id": 328,
+        "nombre": "garam masala",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de especias típica de la cocina india, con sabor cálido y aromático.",
+        "beneficios": "Aporta antioxidantes y ayuda a realzar el sabor de los platos.",
+        "usos": "Se usa en currys, guisos, arroces y carnes.",
+        "palabrasClave": [
+            "garam masala",
+            "curry",
+            "india",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1350,
+        "imagen": "../imagenes/condimentos/garam_masala.jpg"
+    },
+    {
+        "id": 329,
+        "nombre": "hongos champignones secos",
+        "categoria": "condimentos",
+        "descripcion": "Hongos champignones deshidratados, con sabor suave y textura delicada.",
+        "beneficios": "Fuente de proteínas vegetales y minerales.",
+        "usos": "Se usan en sopas, risottos, salsas y guisos.",
+        "palabrasClave": [
+            "hongos",
+            "champignones",
+            "deshidratados",
+            "setas",
+            "condimento"
+        ],
+        "precio": 1800,
+        "imagen": "../imagenes/condimentos/hongos_champignones.jpg"
+    },
+    {
+        "id": 330,
+        "nombre": "hongos de pino chilenos",
+        "categoria": "condimentos",
+        "descripcion": "Hongos de pino deshidratados, típicos de la cocina chilena, con aroma intenso.",
+        "beneficios": "Ricos en fibra, antioxidantes y minerales.",
+        "usos": "Se utilizan en salsas, guisos, carnes y pastas.",
+        "palabrasClave": [
+            "hongos",
+            "pino",
+            "chilenos",
+            "setas",
+            "condimento"
+        ],
+        "precio": 2000,
+        "imagen": "../imagenes/condimentos/hongos_pino_chilenos.jpg"
+    },
+    {
+        "id": 331,
+        "nombre": "hongos girgolas",
+        "categoria": "condimentos",
+        "descripcion": "Hongos gírgolas deshidratados, con sabor delicado y textura suave.",
+        "beneficios": "Fuente de proteínas, vitaminas B y antioxidantes.",
+        "usos": "Se usan en salteados, pastas, guisos y salsas.",
+        "palabrasClave": [
+            "hongos",
+            "girgolas",
+            "setas",
+            "condimento"
+        ],
+        "precio": 1900,
+        "imagen": "../imagenes/condimentos/hongos_girgolas.jpg"
+    },
+    {
+        "id": 332,
+        "nombre": "hongos shitake",
+        "categoria": "condimentos",
+        "descripcion": "Hongos shitake deshidratados, muy utilizados en la cocina asiática.",
+        "beneficios": "Refuerzan el sistema inmunológico y son ricos en antioxidantes.",
+        "usos": "Se utilizan en sopas, woks, ramen y guisos.",
+        "palabrasClave": [
+            "hongos",
+            "shitake",
+            "asiáticos",
+            "setas",
+            "condimento"
+        ],
+        "precio": 2100,
+        "imagen": "../imagenes/condimentos/hongos_shitake.jpg"
+    },
+    {
+        "id": 333,
+        "nombre": "jengibre en raíz",
+        "categoria": "condimentos",
+        "descripcion": "Raíz de jengibre fresca, con sabor picante y aroma cítrico.",
+        "beneficios": "Antiinflamatorio natural, favorece la digestión y refuerza el sistema inmune.",
+        "usos": "Se usa en tés, sopas, woks, carnes y postres.",
+        "palabrasClave": [
+            "jengibre",
+            "raíz",
+            "fresco",
+            "condimento"
+        ],
+        "precio": 850,
+        "imagen": "../imagenes/condimentos/jengibre_raiz.jpg"
+    },
+    {
+        "id": 334,
+        "nombre": "jengibre molido",
+        "categoria": "condimentos",
+        "descripcion": "Jengibre deshidratado y molido, con sabor picante y cálido.",
+        "beneficios": "Favorece la digestión, alivia náuseas y es antioxidante.",
+        "usos": "Ideal para repostería, infusiones, guisos y currys.",
+        "palabrasClave": [
+            "jengibre",
+            "molido",
+            "especia",
+            "condimento"
+        ],
+        "precio": 950,
+        "imagen": "../imagenes/condimentos/jengibre_molido.jpg"
+    },
+    {
+        "id": 335,
+        "nombre": "hojas de laurel",
+        "categoria": "condimentos",
+        "descripcion": "Hojas secas de laurel con aroma intenso y sabor característico.",
+        "beneficios": "Favorece la digestión y realza el sabor de los guisos.",
+        "usos": "Se usa en sopas, guisos, salsas y marinadas.",
+        "palabrasClave": [
+            "laurel",
+            "hojas",
+            "condimento",
+            "salsa"
+        ],
+        "precio": 600,
+        "imagen": "../imagenes/condimentos/laurel_hojas.jpg"
+    },
+    {
+        "id": 336,
+        "nombre": "lecitina de soja granulada",
+        "categoria": "condimentos",
+        "descripcion": "Lecitina de soja en gránulos, utilizada como emulsionante natural y suplemento nutricional.",
+        "beneficios": "Favorece el metabolismo de las grasas y contribuye al funcionamiento cerebral.",
+        "usos": "Se agrega en batidos, panes, galletas y productos de repostería.",
+        "palabrasClave": [
+            "lecitina",
+            "soja",
+            "granulada",
+            "emulsionante"
+        ],
+        "precio": 1300,
+        "imagen": "../imagenes/condimentos/lecitina_soja.jpg"
+    },
+    {
+        "id": 337,
+        "nombre": "merkén chileno",
+        "categoria": "condimentos",
+        "descripcion": "Condimento tradicional chileno a base de ají seco ahumado y especias.",
+        "beneficios": "Aporta un sabor ahumado y picante, además de antioxidantes naturales.",
+        "usos": "Se usa en carnes, guisos, salsas y sopas.",
+        "palabrasClave": [
+            "merken",
+            "merkén",
+            "chile",
+            "picante",
+            "ahumado"
+        ],
+        "precio": 1500,
+        "imagen": "../imagenes/condimentos/merken_chileno.jpg"
+    },
+    {
+        "id": 338,
+        "nombre": "mix de vegetales",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de vegetales deshidratados para dar sabor a sopas y guisos.",
+        "beneficios": "Aporta sabor natural sin conservantes ni aditivos.",
+        "usos": "Ideal para sopas, caldos, salsas y arroz.",
+        "palabrasClave": [
+            "mix",
+            "vegetales",
+            "sopas",
+            "condimento"
+        ],
+        "precio": 950,
+        "imagen": "../imagenes/condimentos/mix_vegetales.jpg"
+    },
+    {
+        "id": 339,
+        "nombre": "mostaza en grano",
+        "categoria": "condimentos",
+        "descripcion": "Granos de mostaza amarillos, con sabor intenso y ligeramente picante.",
+        "beneficios": "Favorece la digestión y aporta antioxidantes.",
+        "usos": "Se utiliza en encurtidos, adobos, salsas y marinadas.",
+        "palabrasClave": [
+            "mostaza",
+            "grano",
+            "encurtidos",
+            "salsas"
+        ],
+        "precio": 1000,
+        "imagen": "../imagenes/condimentos/mostaza_grano.jpg"
+    },
+    {
+        "id": 340,
+        "nombre": "mostaza molida",
+        "categoria": "condimentos",
+        "descripcion": "Mostaza en polvo, con sabor fuerte y picante.",
+        "beneficios": "Aporta sabor y ayuda a la digestión.",
+        "usos": "Se usa en aderezos, salsas, carnes y guisos.",
+        "palabrasClave": [
+            "mostaza",
+            "molida",
+            "condimento",
+            "especia"
+        ],
+        "precio": 1050,
+        "imagen": "../imagenes/condimentos/mostaza_molida.jpg"
+    },
+    {
+        "id": 341,
+        "nombre": "nuez moscada entera",
+        "categoria": "condimentos",
+        "descripcion": "Nueces enteras de moscada, con aroma intenso y dulce.",
+        "beneficios": "Favorece la digestión y es antioxidante natural.",
+        "usos": "Se ralla al momento en salsas, purés, postres y bebidas.",
+        "palabrasClave": [
+            "nuez moscada",
+            "entera",
+            "condimento",
+            "especia"
+        ],
+        "precio": 1700,
+        "imagen": "../imagenes/condimentos/nuez_moscada_entera.jpg"
+    },
+    {
+        "id": 342,
+        "nombre": "nuez moscada molida",
+        "categoria": "condimentos",
+        "descripcion": "Nuez moscada en polvo, con sabor dulce y aroma cálido.",
+        "beneficios": "Aporta antioxidantes y ayuda a la digestión.",
+        "usos": "Ideal para postres, salsas blancas, sopas y bebidas.",
+        "palabrasClave": [
+            "nuez moscada",
+            "molida",
+            "condimento",
+            "especia"
+        ],
+        "precio": 1600,
+        "imagen": "../imagenes/condimentos/nuez_moscada_molida.jpg"
+    },
+    {
+        "id": 343,
+        "nombre": "orégano",
+        "categoria": "condimentos",
+        "descripcion": "Hojas secas de orégano, con aroma fuerte y sabor característico.",
+        "beneficios": "Tiene propiedades antioxidantes y digestivas.",
+        "usos": "Se usa en pizzas, pastas, salsas y carnes.",
+        "palabrasClave": [
+            "orégano",
+            "hierba",
+            "condimento",
+            "pizza"
+        ],
+        "precio": 700,
+        "imagen": "../imagenes/condimentos/oregano.jpg"
+    },
+    {
+        "id": 344,
+        "nombre": "paprika (pimenton)",
+        "categoria": "condimentos",
+        "descripcion": "Pimentón dulce molido, con color rojo intenso y sabor ahumado suave.",
+        "beneficios": "Aporta antioxidantes y realza el color de los platos.",
+        "usos": "Ideal para guisos, carnes, sopas y adobos.",
+        "palabrasClave": [
+            "pimentón",
+            "paprika",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1000,
+        "imagen": "../imagenes/condimentos/paprika.jpg"
+    },
+    {
+        "id": 345,
+        "nombre": "perejil",
+        "categoria": "condimentos",
+        "descripcion": "Hojas secas de perejil, con sabor suave y aroma fresco.",
+        "beneficios": "Fuente de vitaminas A y C, además de antioxidantes.",
+        "usos": "Se usa en sopas, guisos, carnes y ensaladas.",
+        "palabrasClave": [
+            "perejil",
+            "hierba",
+            "condimento"
+        ],
+        "precio": 750,
+        "imagen": "../imagenes/condimentos/perejil.jpg"
+    },
+    {
+        "id": 346,
+        "nombre": "pimentón ahumado",
+        "categoria": "condimentos",
+        "descripcion": "Pimentón ahumado de sabor intenso y color rojo profundo.",
+        "beneficios": "Aporta antioxidantes y un sabor ahumado característico.",
+        "usos": "Ideal para carnes, guisos, salsas y adobos.",
+        "palabrasClave": [
+            "pimentón",
+            "ahumado",
+            "paprika",
+            "condimento"
+        ],
+        "precio": 1100,
+        "imagen": "../imagenes/condimentos/pimenton_ahumado.jpg"
+    },
+    {
+        "id": 347,
+        "nombre": "pimentón dulce",
+        "categoria": "condimentos",
+        "descripcion": "Pimentón molido de sabor dulce y aroma suave.",
+        "beneficios": "Aporta color y sabor sin picante.",
+        "usos": "Se usa en guisos, salsas, sopas y carnes.",
+        "palabrasClave": [
+            "pimentón",
+            "dulce",
+            "paprika",
+            "condimento"
+        ],
+        "precio": 1000,
+        "imagen": "../imagenes/condimentos/pimenton_dulce.jpg"
+    },
+    {
+        "id": 348,
+        "nombre": "pimienta blanca en granos",
+        "categoria": "condimentos",
+        "descripcion": "Granos de pimienta blanca, con sabor suave y aromático.",
+        "beneficios": "Favorece la digestión y es antioxidante.",
+        "usos": "Ideal para salsas blancas, sopas y pescados.",
+        "palabrasClave": [
+            "pimienta",
+            "blanca",
+            "granos",
+            "condimento"
+        ],
+        "precio": 1400,
+        "imagen": "../imagenes/condimentos/pimienta_blanca_granos.jpg"
+    },
+    {
+        "id": 349,
+        "nombre": "pimienta blanca molida",
+        "categoria": "condimentos",
+        "descripcion": "Pimienta blanca en polvo, de sabor suave y ligeramente picante.",
+        "beneficios": "Realza el sabor de los platos sin alterar su color.",
+        "usos": "Se usa en salsas, sopas, purés y pescados.",
+        "palabrasClave": [
+            "pimienta",
+            "blanca",
+            "molida",
+            "condimento"
+        ],
+        "precio": 1350,
+        "imagen": "../imagenes/condimentos/pimienta_blanca_molida.jpg"
+    },
+    {
+        "id": 350,
+        "nombre": "pimienta cayena",
+        "categoria": "condimentos",
+        "descripcion": "Pimienta cayena molida, de sabor picante y color rojo intenso.",
+        "beneficios": "Acelera el metabolismo y aporta antioxidantes.",
+        "usos": "Se usa en carnes, sopas, salsas y platos picantes.",
+        "palabrasClave": [
+            "pimienta",
+            "cayena",
+            "picante",
+            "condimento"
+        ],
+        "precio": 1200,
+        "imagen": "../imagenes/condimentos/pimienta_cayena.jpg"
+    },
+    {
+        "id": 351,
+        "nombre": "pimienta jamaica",
+        "categoria": "condimentos",
+        "descripcion": "Granos de pimienta de Jamaica, con aroma dulce y especiado.",
+        "beneficios": "Aporta antioxidantes y favorece la digestión.",
+        "usos": "Se usa en marinadas, carnes, guisos y salsas.",
+        "palabrasClave": [
+            "pimienta",
+            "jamaica",
+            "especia",
+            "condimento"
+        ],
+        "precio": 1500,
+        "imagen": "../imagenes/condimentos/pimienta_jamaica.jpg"
+    },
+    {
+        "id": 352,
+        "nombre": "pimienta negra en granos",
+        "categoria": "condimentos",
+        "descripcion": "Granos de pimienta negra con sabor intenso y picante.",
+        "beneficios": "Es antioxidante y mejora la absorción de nutrientes.",
+        "usos": "Se usa en carnes, sopas, guisos y salsas.",
+        "palabrasClave": [
+            "pimienta",
+            "negra",
+            "granos",
+            "condimento"
+        ],
+        "precio": 1300,
+        "imagen": "../imagenes/condimentos/pimienta_negra_granos.jpg"
+    },
+    {
+        "id": 353,
+        "nombre": "pimienta negra molida",
+        "categoria": "condimentos",
+        "descripcion": "Pimienta negra molida de aroma fuerte y sabor picante.",
+        "beneficios": "Realza el sabor de cualquier plato y es antioxidante.",
+        "usos": "Ideal para carnes, vegetales, sopas y salsas.",
+        "palabrasClave": [
+            "pimienta",
+            "negra",
+            "molida",
+            "condimento"
+        ],
+        "precio": 1250,
+        "imagen": "../imagenes/condimentos/pimienta_negra_molida.jpg"
+    },
+    {
+        "id": 354,
+        "nombre": "pimienta rosa",
+        "categoria": "condimentos",
+        "descripcion": "Granos de pimienta rosa, con sabor suave y ligeramente dulce.",
+        "beneficios": "Aporta aroma y antioxidantes naturales.",
+        "usos": "Se usa en carnes, pescados, salsas y adobos.",
+        "palabrasClave": [
+            "pimienta",
+            "rosa",
+            "granos",
+            "condimento"
+        ],
+        "precio": 1500,
+        "imagen": "../imagenes/condimentos/pimienta_rosa.jpg"
+    },
+    {
+        "id": 355,
+        "nombre": "pimienta verde",
+        "categoria": "condimentos",
+        "descripcion": "Granos de pimienta verde, de sabor fresco y picante suave.",
+        "beneficios": "Aporta antioxidantes y favorece la digestión.",
+        "usos": "Se usa en carnes, salsas y encurtidos.",
+        "palabrasClave": [
+            "pimienta",
+            "verde",
+            "granos",
+            "condimento"
+        ],
+        "precio": 1400,
+        "imagen": "../imagenes/condimentos/pimienta_verde.jpg"
+    },
+    {
+        "id": 356,
+        "nombre": "provenzal",
+        "categoria": "condimentos",
+        "descripcion": "Mezcla de ajo deshidratado y perejil, muy aromática.",
+        "beneficios": "Aporta sabor natural y facilita la preparación de comidas.",
+        "usos": "Se usa en pastas, carnes, guisos y salsas.",
+        "palabrasClave": [
+            "provenzal",
+            "ajo",
+            "perejil",
+            "condimento"
+        ],
+        "precio": 800,
+        "imagen": "../imagenes/condimentos/provenzal.jpg"
+    },
+    {
+        "id": 357,
+        "nombre": "psyllium en polvo",
+        "categoria": "condimentos",
+        "descripcion": "Cáscara de psyllium molida, rica en fibra soluble.",
+        "beneficios": "Favorece la digestión y la salud intestinal.",
+        "usos": "Se agrega en panes, batidos y recetas sin gluten.",
+        "palabrasClave": [
+            "psyllium",
+            "fibra",
+            "digestión",
+            "condimento"
+        ],
+        "precio": 1900,
+        "imagen": "../imagenes/condimentos/psyllium_polvo.jpg"
+    },
+    {
+        "id": 358,
+        "nombre": "romero",
+        "categoria": "condimentos",
+        "descripcion": "Hojas secas de romero con aroma intenso y sabor característico.",
+        "beneficios": "Antioxidante natural y favorece la digestión.",
+        "usos": "Ideal para carnes, papas, panificados y salsas.",
+        "palabrasClave": [
+            "romero",
+            "hierba",
+            "condimento"
+        ],
+        "precio": 750,
+        "imagen": "../imagenes/condimentos/romero.jpg"
+    },
+    {
+        "id": 359,
+        "nombre": "sal marina fina",
+        "categoria": "condimentos",
+        "descripcion": "Sal marina de grano fino, obtenida de la evaporación del agua de mar.",
+        "beneficios": "Contiene minerales naturales y realza el sabor de los alimentos.",
+        "usos": "Se utiliza en cualquier tipo de preparación, desde carnes hasta repostería.",
+        "palabrasClave": [
+            "sal",
+            "marina",
+            "fina",
+            "condimento"
+        ],
+        "precio": 500,
+        "imagen": "../imagenes/condimentos/sal_marina_fina.jpg"
+    },
+    {
+        "id": 360,
+        "nombre": "sal marina gruesa",
+        "categoria": "condimentos",
+        "descripcion": "Sal marina de grano grueso, ideal para cocción y parrillas.",
+        "beneficios": "Aporta minerales naturales y realza el sabor sin refinar.",
+        "usos": "Se usa en parrillas, carnes y marinadas.",
+        "palabrasClave": [
+            "sal",
+            "marina",
+            "gruesa",
+            "condimento"
+        ],
+        "precio": 520,
+        "imagen": "../imagenes/condimentos/sal_marina_gruesa.jpg"
+    },
+    {
+        "id": 361,
+        "nombre": "sal negra fina",
+        "categoria": "condimentos",
+        "descripcion": "Sal negra de grano fino, con ligero aroma sulfuroso.",
+        "beneficios": "Aporta minerales y un sabor único a los platos.",
+        "usos": "Ideal para platos exóticos, ensaladas y cocina india.",
+        "palabrasClave": [
+            "sal",
+            "negra",
+            "fina",
+            "condimento"
+        ],
+        "precio": 900,
+        "imagen": "../imagenes/condimentos/sal_negra_fina.jpg"
+    },
+    {
+        "id": 362,
+        "nombre": "sal rosada del Himalaya fina",
+        "categoria": "condimentos",
+        "descripcion": "Sal rosada fina, proveniente de las minas del Himalaya.",
+        "beneficios": "Rica en minerales naturales y baja en sodio.",
+        "usos": "Se utiliza en todo tipo de comidas y repostería.",
+        "palabrasClave": [
+            "sal",
+            "rosada",
+            "himalaya",
+            "fina",
+            "condimento"
+        ],
+        "precio": 850,
+        "imagen": "../imagenes/condimentos/sal_rosada_himalaya_fina.jpg"
+    },
+    {
+        "id": 363,
+        "nombre": "sal rosada del Himalaya gruesa",
+        "categoria": "condimentos",
+        "descripcion": "Sal rosada de grano grueso, perfecta para molinillos y parrillas.",
+        "beneficios": "Aporta minerales y realza el sabor de los alimentos.",
+        "usos": "Ideal para carnes, parrillas y cocina gourmet.",
+        "palabrasClave": [
+            "sal",
+            "rosada",
+            "himalaya",
+            "gruesa",
+            "condimento"
+        ],
+        "precio": 870,
+        "imagen": "../imagenes/condimentos/sal_rosada_himalaya_gruesa.jpg"
+    },
+    {
+        "id": 364,
+        "nombre": "tomates secos",
+        "categoria": "condimentos",
+        "descripcion": "Tomates deshidratados, con sabor concentrado y dulce.",
+        "beneficios": "Fuente de antioxidantes y licopeno.",
+        "usos": "Se usa en ensaladas, salsas, pastas y pizzas.",
+        "palabrasClave": [
+            "tomates",
+            "secos",
+            "deshidratados",
+            "condimento"
+        ],
+        "precio": 1400,
+        "imagen": "../imagenes/condimentos/tomates_secos.jpg"
+    },
+    {
+        "id": 365,
+        "nombre": "tomillo",
+        "categoria": "condimentos",
+        "descripcion": "Hierba aromática de sabor intenso y fresco.",
+        "beneficios": "Antibacteriano natural y favorece la digestión.",
+        "usos": "Ideal para carnes, vegetales, sopas y guisos.",
+        "palabrasClave": [
+            "tomillo",
+            "hierba",
+            "condimento"
+        ],
+        "precio": 800,
+        "imagen": "../imagenes/condimentos/tomillo.jpg"
+    },
+    {
+        "id": 366,
+        "nombre": "wasabi",
+        "categoria": "condimentos",
+        "descripcion": "Condimento japonés en polvo con sabor picante intenso.",
+        "beneficios": "Tiene propiedades antibacterianas y realza el sabor de los pescados.",
+        "usos": "Se utiliza en sushi, salsas y marinadas.",
+        "palabrasClave": [
+            "wasabi",
+            "picante",
+            "japonés",
+            "condimento",
+            "sushi"
+        ],
+        "precio": 2500,
+        "imagen": "../imagenes/condimentos/wasabi.jpg"
+    }
+]
