@@ -9,7 +9,7 @@ El proyecto está desarrollado íntegramente en **JavaScript**, haciendo uso del
 - **Chatbot interactivo**: Mapachito responde a consultas de productos.
 - **Búsqueda inteligente**:
   - Por **nombre exacto** (ej. "harina de avena,harina integral, semillas de lino").
-  - Por **categoría** (ej. "semillas, harinas o especias").
+  - Por **categoría** (ej. "semillas, condimentos, harinas o especias").
   - Por **palabras clave** relacionadas (lino, omega 3, proteinas,etc).
 - **Historial de chat**:
   - Se almacena en `localStorage`.
@@ -18,12 +18,14 @@ El proyecto está desarrollado íntegramente en **JavaScript**, haciendo uso del
   - `harinas.json`
   - `semillas.json`
   - `especias.json`
-  (proximamente, frutos secos, pasteleria, condimentos, etc)
+  - `condimentos.json`
+  (proximamente, frutos secos, pasteleria, etc)
 
 - **Sistema de carrito**:
   - (SISTEMA DE CARRITO A AGREGAR PROXIMAMENTE)
-  
 
+-**INTEGRACION CON IA**
+  -(SISTEMA DE INTEGRACION CON IA A AGREGAR PROXIMAMENTE)
 - **Efecto "Mapachito está escribiendo..."** para mejorar la experiencia de usuario.
 
 ---
@@ -44,7 +46,7 @@ El proyecto está desarrollado íntegramente en **JavaScript**, haciendo uso del
 
 ## 📝 **Uso**
 1. **Abrir `index.html` en el navegador.**
-2. Escribir el nombre de un producto (por ejemplo, _harina de avena_) o una categoría (_semillas_).
+2. Escribir el nombre de un producto (por ejemplo, harina de avena) o una categoría (semillas, condimentos, harinas, especias).
 3. Mapachito mostrará:
    - Información detallada del producto (descripción, beneficios, usos, ID).
    - O todos los productos relacionados con la categoría o palabras clave.
