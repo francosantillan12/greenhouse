@@ -43,14 +43,13 @@ async function cargarEspecias() {
 
 async function cargarCondimentos() {
   try {
-    const respuesta = await fetch('./data/condimentos.json'); 
+    const respuesta = await fetch('./data/condimentos.json');
     productosCondimentos = await respuesta.json();
   } catch (error) {
     console.error("Error al cargar los condimentos:", error);
     Swal.fire("Error", "No se pudieron cargar los condimentos", "error");
   }
 }
-
 
 // *****************************************************
 //          INICIALIZAR TODOS LOS PRODUCTOS
@@ -60,7 +59,6 @@ async function inicializarProductos() {
   cargaCompleta = true;
   entradaUsuario.disabled = false;
 }
-
 inicializarProductos();
 
 // *****************************************************
@@ -68,8 +66,13 @@ inicializarProductos();
 // *****************************************************
 function obtenerProximoId() {
   const todosProductos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
-  if (todosProductos.length === 0) return 0;
-  return Math.max(...todosProductos.map(p => p.id)) + 1;
+  if (!todosProductos.some(() => true)) return 0;
+
+  let maxId = todosProductos[0].id;
+  for (const p of todosProductos) {
+    if (p.id > maxId) maxId = p.id;
+  }
+  return maxId + 1;
 }
 
 function agregarProducto(nuevoProducto, categoriaArray) {
@@ -119,7 +122,6 @@ if (historialGuardado) {
 // *****************************************************
 //    FUNCIONES PARA NORMALIZAR Y DETECTAR ERRORES
 // *****************************************************
-// NUEVO: Esta función elimina acentos y pasa todo a minúsculas
 function normalizarTexto(texto) {
   return texto
     .normalize("NFD")
@@ -128,7 +130,6 @@ function normalizarTexto(texto) {
     .trim();
 }
 
-// NUEVO: Calcula la distancia de Levenshtein (para detectar palabras parecidas)
 function calcularDistancia(a, b) {
   const matrix = Array.from({ length: a.length + 1 }, (_, i) => [i]);
   for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
@@ -145,7 +146,6 @@ function calcularDistancia(a, b) {
   return matrix[a.length][b.length];
 }
 
-// NUEVO: Busca un producto con un nombre parecido
 function buscarProductoSimilar(consulta, baseDeDatos) {
   const consultaNorm = normalizarTexto(consulta);
   let mejorCoincidencia = null;
@@ -154,13 +154,34 @@ function buscarProductoSimilar(consulta, baseDeDatos) {
   baseDeDatos.forEach((producto) => {
     const nombreNorm = normalizarTexto(producto.nombre);
     const distancia = calcularDistancia(consultaNorm, nombreNorm);
-    if (distancia < menorDistancia && distancia <= 3) { // hasta 3 cambios
+    if (distancia < menorDistancia && distancia <= 3) {
       menorDistancia = distancia;
       mejorCoincidencia = producto;
     }
   });
 
   return mejorCoincidencia;
+}
+
+// *****************************************************
+//   --- NUEVO --- FUNCIÓN PARA CONSULTAR A LA IA
+// *****************************************************
+async function consultarIA(mensajeUsuario) {
+  try {
+    const respuesta = await fetch("http://localhost:3000/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mensaje: mensajeUsuario }),
+    });
+
+    const data = await respuesta.json();
+    return data.respuesta;
+  } catch (error) {
+    console.error("Error al conectar con la IA:", error);
+    return "Lo siento, no puedo responder en este momento.";
+  }
 }
 
 // *****************************************************
@@ -171,6 +192,25 @@ formulario.addEventListener("submit", function (evento) {
   const consulta = entradaUsuario.value.toLowerCase().trim();
   if (!consulta) return;
 
+  // --- NUEVO: Detectar saludos y responder con mensaje de bienvenida
+  const saludos = ["hola", "buenas", "buenos dias", "buenas tardes", "buenas noches", "hey", "ola", "hello"];
+  if (saludos.includes(normalizarTexto(consulta))) {
+    mostrarMensaje(
+      "Mapachito",
+      `🦝 ¡Hola! Soy Mapachito y estoy acá para ayudarte. 
+       Ingresá el nombre del producto que estás buscando o seleccioná una categoría:
+       <div class="contenedor-categorias">
+         <button class="categoria-boton" data-categoria="harinas">Harinas</button>
+         <button class="categoria-boton" data-categoria="semillas">Semillas</button>
+         <button class="categoria-boton" data-categoria="especias">Especias</button>
+         <button class="categoria-boton" data-categoria="condimentos">Condimentos</button>
+       </div>`
+    );
+    entradaUsuario.value = "";
+    return; // <<-- Detenemos la búsqueda de productos
+  }
+
+  // --- Resto de la lógica (búsqueda de productos)
   if (!cargaCompleta) {
     mostrarEscribiendo();
     setTimeout(() => {
@@ -184,15 +224,12 @@ formulario.addEventListener("submit", function (evento) {
 
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
 
-  // --- NUEVO: Dividir en partes por coma o 'y'
   const partesConsulta = consulta
     .split(/,| y | e /i)
     .map(t => normalizarTexto(t))
     .filter(Boolean);
 
   let productosEncontrados = [];
-
-  // Buscar cada parte por coincidencia exacta o parecida
   partesConsulta.forEach(parte => {
     let producto = baseDeDatos.find(p => normalizarTexto(p.nombre) === parte);
     if (!producto) {
@@ -203,7 +240,7 @@ formulario.addEventListener("submit", function (evento) {
     }
   });
 
-  if (productosEncontrados.length > 0) {
+  if (productosEncontrados.some(() => true)) {
     mostrarEscribiendo();
     setTimeout(() => {
       eliminarEscribiendo();
@@ -215,14 +252,13 @@ formulario.addEventListener("submit", function (evento) {
       });
     }, 1000);
   } else {
-    // Si no se encontraron productos, buscar por palabras clave
     const relacionados = baseDeDatos.filter(p =>
       p.palabrasClave.some(palabra =>
         normalizarTexto(palabra).includes(normalizarTexto(consulta))
       )
     );
 
-    if (relacionados.length > 0) {
+    if (relacionados.some(() => true)) {
       mostrarEscribiendo();
       setTimeout(() => {
         eliminarEscribiendo();
@@ -233,10 +269,10 @@ formulario.addEventListener("submit", function (evento) {
       }, 1000);
     } else {
       mostrarEscribiendo();
-      setTimeout(() => {
+      consultarIA(consulta).then(respuestaIA => {
         eliminarEscribiendo();
-        mostrarMensaje("Mapachito", "Lo siento, no encontré ningún producto relacionado con tu consulta.", true);
-      }, 1000);
+        mostrarMensaje("Mapachito", respuestaIA, true);
+      });
     }
   }
 
@@ -287,7 +323,7 @@ function mostrarProductosPorCategoria(categoria) {
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
   const productos = baseDeDatos.filter(p => p.categoria === categoria);
 
-  if (productos.length > 0) {
+  if (productos.some(() => true)) {
     mostrarEscribiendo();
     setTimeout(() => {
       eliminarEscribiendo();
