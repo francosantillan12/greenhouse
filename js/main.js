@@ -114,6 +114,7 @@ if (historialGuardado) {
        <button class="categoria-boton" data-categoria="harinas">Harinas</button>
        <button class="categoria-boton" data-categoria="semillas">Semillas</button>
        <button class="categoria-boton" data-categoria="especias">Especias</button>
+       <button class="categoria-boton" data-categoria="condimentos">Condimentos</button>
      </div>`,
     false
   );
@@ -164,7 +165,9 @@ function buscarProductoSimilar(consulta, baseDeDatos) {
 }
 
 // *****************************************************
-//   --- NUEVO --- FUNCIÓN PARA CONSULTAR A LA IA
+//           FUNCIÓN PARA CONSULTAR A LA IA 
+//  SE QUE NO VA PARA LA ENTREGA FINAL PERO SEGUIRIA DESP PERDON PROFE) 
+//         LO ESTOY ARMANDO CON AYUDA DE CHATGPT
 // *****************************************************
 async function consultarIA(mensajeUsuario) {
   try {
@@ -193,7 +196,7 @@ formulario.addEventListener("submit", function (evento) {
   if (!consulta) return;
 
   // --- NUEVO: Detectar saludos y responder con mensaje de bienvenida
-  const saludos = ["hola", "buenas", "buenos dias", "buenas tardes", "buenas noches", "hey", "ola", "hello"];
+  const saludos = ["holaa","ol","hol","hola", "buenas", "buenos dias", "buenas tardes", "buenas noches", "hey", "ola", "hello"];
   if (saludos.includes(normalizarTexto(consulta))) {
     mostrarMensaje(
       "Mapachito",
@@ -216,7 +219,7 @@ formulario.addEventListener("submit", function (evento) {
     setTimeout(() => {
       eliminarEscribiendo();
       mostrarMensaje("Mapachito", "⏳ Estoy cargando los productos, por favor esperá un momento...", true);
-    }, 1000);
+    }, 800);
     return;
   }
 
@@ -316,7 +319,7 @@ function mostrarMensaje(remitente, texto, guardar = true, delay = 0) {
         mostrarProductosPorCategoria(categoria);
       });
     });
-  }, delay || 200);
+  }, delay || 400);
 }
 
 function mostrarProductosPorCategoria(categoria) {
