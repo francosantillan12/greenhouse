@@ -55,3 +55,21 @@ function agregarAlCarrito(idProducto) {
 }
 
 cargarSemillas();
+
+
+// Botón hamburguesa
+const btnMenu = document.getElementById("menu-btn");
+const menu = document.getElementById("menu");
+
+if (btnMenu && menu) {
+  btnMenu.addEventListener("click", () => {
+    menu.classList.toggle("mostrar");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  menu.querySelectorAll("a").forEach(enlace => {
+    enlace.addEventListener("click", () => {
+      menu.classList.remove("mostrar");
+    });
+  });
+}

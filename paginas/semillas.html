@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GreenHouse - Semillas</title>
-  <link rel="stylesheet" href="../styles/style.css" />
-  <script defer src="../js/semillas.js" ></script>
 
+  <link rel="stylesheet" href="../styles/style.css" />
+
+  <script defer src="../js/semillas.js"></script>
+  <script defer src="../js/menu.js"></script> <!-- Script hamburguesa -->
 </head>
 <body>
   <header class="encabezado">
@@ -14,15 +17,20 @@
       <img src="../imagenes/logo/logogreenhouse.jpeg" alt="GreenHouse Logo" />
       <h1>GreenHouse - Semillas</h1>
     </div>
-    <nav class="navbar">
+
+    <!-- Navbar con ID unificado -->
+    <nav class="navbar" id="menu">
       <ul>
         <li><a href="../index.html">Inicio</a></li>
-        <li><a href="../index.html">Semillas</a></li>
-        <li><a href="../index.html">Harinas</a></li>
-        <li><a href="../index.html">Especias</a></li>
-        <li><a href="../index.html">Carrito</a></li>
+        <li><a href="../index.html#semillas">Semillas</a></li>
+        <li><a href="../index.html#harinas">Harinas</a></li>
+        <li><a href="../index.html#especias">Especias</a></li>
+        <li><a href="../index.html#carrito">Carrito</a></li>
       </ul>
     </nav>
+
+    <!-- Botón hamburguesa -->
+    <button class="menu-btn" id="menu-btn" aria-label="Abrir menú">&#9776;</button>
   </header>
 
   <main>
@@ -32,30 +40,28 @@
   </main>
 
   <footer class="footer">
-        <div class="footer-contenedor">
-            <h2 class="footer-logo">🌿 GreenHouse</h2>
-            <p class="footer-texto">Mas que una dietetica.</p>
+    <div class="footer-contenedor">
+      <h2 class="footer-logo">🌿 GreenHouse</h2>
+      <p class="footer-texto">Mas que una dietetica.</p>
 
-            <ul class="footer-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-            </ul>
+      <ul class="footer-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+      </ul>
 
-            <div class="footer-redes">
-                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" />
-                </a>
-                <a href="https://web.whatsapp.com/" target="_blank" aria-label="WhatsApp">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-                </a>
-        </div>
+      <div class="footer-redes">
+        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" />
+        </a>
+        <a href="https://web.whatsapp.com/" target="_blank" aria-label="WhatsApp">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+        </a>
+      </div>
 
-    <p class="footer-copy">© 2025 GreenHouse. Todos los derechos reservados.</p>
-  </div>
-    </footer>
-
- 
+      <p class="footer-copy">© 2025 GreenHouse. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 </body>
 </html>

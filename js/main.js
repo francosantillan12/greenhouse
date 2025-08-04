@@ -6,81 +6,32 @@ let productosSemillas = [];
 let productosEspecias = [];
 let productosCondimentos = [];
 
-let cargaCompleta = false; // Controla la carga de productos
+let cargaCompleta = false;
 
 // *****************************************************
 //        FUNCIONES PARA CARGAR JSON DE PRODUCTOS
 // *****************************************************
-async function cargarHarinas() {
+async function cargarProductos(ruta, destino) {
   try {
-    const respuesta = await fetch('./data/harinas.json');
-    productosHarinas = await respuesta.json();
+    const respuesta = await fetch(ruta);
+    destino.splice(0, destino.length, ...(await respuesta.json()));
   } catch (error) {
-    console.error("Error al cargar harinas:", error);
-    Swal.fire("Error", "No se pudieron cargar las harinas", "error");
+    console.error(`Error al cargar ${ruta}:`, error);
+    Swal.fire("Error", `No se pudieron cargar los productos de ${ruta}`, "error");
   }
 }
 
-async function cargarSemillas() {
-  try {
-    const respuesta = await fetch('./data/semillas.json');
-    productosSemillas = await respuesta.json();
-  } catch (error) {
-    console.error("Error al cargar semillas:", error);
-    Swal.fire("Error", "No se pudieron cargar las semillas", "error");
-  }
-}
-
-async function cargarEspecias() {
-  try {
-    const respuesta = await fetch('./data/especias.json');
-    productosEspecias = await respuesta.json();
-  } catch (error) {
-    console.error("Error al cargar especias:", error);
-    Swal.fire("Error", "No se pudieron cargar las especias", "error");
-  }
-}
-
-async function cargarCondimentos() {
-  try {
-    const respuesta = await fetch('./data/condimentos.json');
-    productosCondimentos = await respuesta.json();
-  } catch (error) {
-    console.error("Error al cargar los condimentos:", error);
-    Swal.fire("Error", "No se pudieron cargar los condimentos", "error");
-  }
-}
-
-// *****************************************************
-//          INICIALIZAR TODOS LOS PRODUCTOS
-// *****************************************************
 async function inicializarProductos() {
-  await Promise.all([cargarHarinas(), cargarSemillas(), cargarEspecias(), cargarCondimentos()]);
+  await Promise.all([
+    cargarProductos('./data/harinas.json', productosHarinas),
+    cargarProductos('./data/semillas.json', productosSemillas),
+    cargarProductos('./data/especias.json', productosEspecias),
+    cargarProductos('./data/condimentos.json', productosCondimentos)
+  ]);
   cargaCompleta = true;
   entradaUsuario.disabled = false;
 }
 inicializarProductos();
-
-// *****************************************************
-//   FUNCIONES AUXILIARES PARA GESTIONAR PRODUCTOS
-// *****************************************************
-function obtenerProximoId() {
-  const todosProductos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
-  if (!todosProductos.some(() => true)) return 0;
-
-  let maxId = todosProductos[0].id;
-  for (const p of todosProductos) {
-    if (p.id > maxId) maxId = p.id;
-  }
-  return maxId + 1;
-}
-
-function agregarProducto(nuevoProducto, categoriaArray) {
-  const nuevoId = obtenerProximoId();
-  nuevoProducto.id = nuevoId;
-  categoriaArray.push(nuevoProducto);
-  return nuevoProducto;
-}
 
 // *****************************************************
 //              VARIABLES DEL DOM
@@ -89,27 +40,23 @@ const formulario = document.getElementById("formulario");
 const entradaUsuario = document.getElementById("entradaUsuario");
 const chat = document.getElementById("chat");
 
-const basePorCategoria = {
-  harinas: productosHarinas,
-  semillas: productosSemillas,
-  especias: productosEspecias,
-  condimentos: productosCondimentos,
-};
-
 // *****************************************************
 //    CARGAR HISTORIAL GUARDADO EN LOCALSTORAGE
 // *****************************************************
 const historialGuardado = localStorage.getItem("chatHistorial");
 if (historialGuardado) {
-  const mensajes = JSON.parse(historialGuardado);
-  mensajes.forEach(({ remitente, texto }) => {
+  JSON.parse(historialGuardado).forEach(({ remitente, texto }) => {
     mostrarMensaje(remitente, texto, false);
   });
 } else {
+  mensajeBienvenida();
+}
+
+function mensajeBienvenida() {
   mostrarMensaje(
     "Mapachito",
     `Hola, soy Mapachito y estoy acá para ayudarte. 
-     Ingresá el nombre del producto que estás buscando o clickea la categoría que estás buscando:
+     Ingresá el nombre del producto o elegí una categoría:
      <div class="contenedor-categorias">
        <button class="categoria-boton" data-categoria="harinas">Harinas</button>
        <button class="categoria-boton" data-categoria="semillas">Semillas</button>
@@ -121,104 +68,97 @@ if (historialGuardado) {
 }
 
 // *****************************************************
-//    FUNCIONES PARA NORMALIZAR Y DETECTAR ERRORES
+//    FUNCIONES AUXILIARES
 // *****************************************************
 function normalizarTexto(texto) {
-  return texto
-    .normalize("NFD")
+  return texto.normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .trim();
 }
 
-function calcularDistancia(a, b) {
-  const matrix = Array.from({ length: a.length + 1 }, (_, i) => [i]);
-  for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+// Distancia Levenshtein simplificada
+function distanciaLevenshtein(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, () => []);
+  for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+
   for (let i = 1; i <= a.length; i++) {
     for (let j = 1; j <= b.length; j++) {
       const costo = a[i - 1] === b[j - 1] ? 0 : 1;
-      matrix[i][j] = Math.min(
-        matrix[i - 1][j] + 1,
-        matrix[i][j - 1] + 1,
-        matrix[i - 1][j - 1] + costo
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + costo
       );
     }
   }
-  return matrix[a.length][b.length];
+  return dp[a.length][b.length];
 }
 
-function buscarProductoSimilar(consulta, baseDeDatos) {
-  const consultaNorm = normalizarTexto(consulta);
-  let mejorCoincidencia = null;
-  let menorDistancia = Infinity;
-
-  baseDeDatos.forEach((producto) => {
-    const nombreNorm = normalizarTexto(producto.nombre);
-    const distancia = calcularDistancia(consultaNorm, nombreNorm);
-    if (distancia < menorDistancia && distancia <= 3) {
-      menorDistancia = distancia;
-      mejorCoincidencia = producto;
+// Búsqueda difusa simple
+function coincidenciaDifusa(palabra, lista) {
+  const maxDistancia = 2; // tolerancia de errores
+  let resultados = [];
+  lista.forEach(prod => {
+    const nombreNorm = normalizarTexto(prod.nombre);
+    if (distanciaLevenshtein(palabra, nombreNorm) <= maxDistancia) {
+      resultados.push(prod);
     }
   });
-
-  return mejorCoincidencia;
+  return resultados;
 }
 
 // *****************************************************
-//           FUNCIÓN PARA CONSULTAR A LA IA 
-//  SE QUE NO VA PARA LA ENTREGA FINAL PERO SEGUIRIA DESP PERDON PROFE) 
-//         LO ESTOY ARMANDO CON AYUDA DE CHATGPT
+//    FUNCIÓN PARA RENDERIZAR PRODUCTOS
 // *****************************************************
-async function consultarIA(mensajeUsuario) {
-  try {
-    const respuesta = await fetch("http://localhost:3000/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ mensaje: mensajeUsuario }),
-    });
-
-    const data = await respuesta.json();
-    return data.respuesta;
-  } catch (error) {
-    console.error("Error al conectar con la IA:", error);
-    return "Lo siento, no puedo responder en este momento.";
+function renderizarProductos(productos, mensajeIntro) {
+  if (!productos.length) {
+    mostrarMensaje("Mapachito", "No encontré resultados para tu búsqueda.");
+    return;
   }
+  mostrarEscribiendo();
+  setTimeout(() => {
+    eliminarEscribiendo();
+    if (mensajeIntro) mostrarMensaje("Mapachito", mensajeIntro);
+    productos.forEach((p, i) => setTimeout(() => mostrarProducto(p), 700 * (i + 1)));
+  }, 1000);
+}
+
+function mostrarProducto(prod) {
+  const precio = Number(prod.precio);
+  const precioFormateado = isNaN(precio) ? "No disponible" : `$${precio.toFixed(2)}`;
+  const respuesta = `
+    <strong>${prod.nombre.toUpperCase()}</strong><br>
+    📝 ${prod.descripcion}<br>
+    ✅ Beneficios: ${prod.beneficios}<br>
+    🍽️ Usos: ${prod.usos}<br>
+    💲 Precio: ${precioFormateado}<br>
+    🆔 ID: ${prod.id}
+  `;
+  mostrarMensaje("Mapachito", respuesta);
 }
 
 // *****************************************************
-//             EVENTO PRINCIPAL DEL FORM
+//          EVENTO PRINCIPAL DEL FORM
 // *****************************************************
 formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
-  const consulta = entradaUsuario.value.toLowerCase().trim();
+  const consulta = normalizarTexto(entradaUsuario.value);
   if (!consulta) return;
 
-  // --- NUEVO: Detectar saludos y responder con mensaje de bienvenida
-  const saludos = ["holaa","ol","hol","hola", "buenas", "buenos dias", "buenas tardes", "buenas noches", "hey", "ola", "hello"];
-  if (saludos.includes(normalizarTexto(consulta))) {
-    mostrarMensaje(
-      "Mapachito",
-      `🦝 ¡Hola! Soy Mapachito y estoy acá para ayudarte. 
-       Ingresá el nombre del producto que estás buscando o seleccioná una categoría:
-       <div class="contenedor-categorias">
-         <button class="categoria-boton" data-categoria="harinas">Harinas</button>
-         <button class="categoria-boton" data-categoria="semillas">Semillas</button>
-         <button class="categoria-boton" data-categoria="especias">Especias</button>
-         <button class="categoria-boton" data-categoria="condimentos">Condimentos</button>
-       </div>`
-    );
+  const saludos = ["hola", "holaa", "buenas", "buenos dias", "buenas tardes", "buenas noches", "hey", "ola", "hello"];
+  if (saludos.includes(consulta)) {
+    mensajeBienvenida();
     entradaUsuario.value = "";
-    return; // <<-- Detenemos la búsqueda de productos
+    return;
   }
 
-  // --- Resto de la lógica (búsqueda de productos)
   if (!cargaCompleta) {
     mostrarEscribiendo();
     setTimeout(() => {
       eliminarEscribiendo();
-      mostrarMensaje("Mapachito", "⏳ Estoy cargando los productos, por favor esperá un momento...", true);
+      mostrarMensaje("Mapachito", "⏳ Cargando productos, por favor esperá...");
     }, 800);
     return;
   }
@@ -226,134 +166,94 @@ formulario.addEventListener("submit", function (evento) {
   mostrarMensaje("usuario", consulta);
 
   const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
-
-  const partesConsulta = consulta
-    .split(/,| y | e /i)
-    .map(t => normalizarTexto(t))
-    .filter(Boolean);
+  const partesConsulta = consulta.split(/,| y | e /i).map(normalizarTexto).filter(Boolean);
 
   let productosEncontrados = [];
+
+  // 1️⃣ Coincidencias normales (filter + includes)
   partesConsulta.forEach(parte => {
-    let producto = baseDeDatos.find(p => normalizarTexto(p.nombre) === parte);
-    if (!producto) {
-      producto = buscarProductoSimilar(parte, baseDeDatos);
-    }
-    if (producto && !productosEncontrados.includes(producto)) {
-      productosEncontrados.push(producto);
-    }
+    const coincidencias = baseDeDatos.filter(p =>
+      normalizarTexto(p.nombre).includes(parte) ||
+      (p.palabrasClave && p.palabrasClave.some(palabra => normalizarTexto(palabra).includes(parte)))
+    );
+    coincidencias.forEach(c => {
+      if (!productosEncontrados.includes(c)) productosEncontrados.push(c);
+    });
   });
 
-  if (productosEncontrados.some(() => true)) {
-    mostrarEscribiendo();
-    setTimeout(() => {
-      eliminarEscribiendo();
-      if (productosEncontrados.length > 1) {
-        mostrarMensaje("Mapachito", "🔎 Encontré los siguientes productos relacionados:", true);
-      }
-      productosEncontrados.forEach((p, i) => {
-        setTimeout(() => mostrarProducto(p), 700 * (i + 1));
+  // 2️⃣ Si no encontró nada, buscar con coincidencia difusa
+  if (!productosEncontrados.length) {
+    partesConsulta.forEach(parte => {
+      const difusos = coincidenciaDifusa(parte, baseDeDatos);
+      difusos.forEach(d => {
+        if (!productosEncontrados.includes(d)) productosEncontrados.push(d);
       });
-    }, 1000);
-  } else {
-    const relacionados = baseDeDatos.filter(p =>
-      p.palabrasClave.some(palabra =>
-        normalizarTexto(palabra).includes(normalizarTexto(consulta))
-      )
-    );
+    });
+  }
 
-    if (relacionados.some(() => true)) {
-      mostrarEscribiendo();
-      setTimeout(() => {
-        eliminarEscribiendo();
-        mostrarMensaje("Mapachito", "Te recomiendo estos productos relacionados:", true);
-        relacionados.forEach((p, i) => {
-          setTimeout(() => mostrarProducto(p), 700 * (i + 1));
-        });
-      }, 1000);
-    } else {
-      mostrarEscribiendo();
-      consultarIA(consulta).then(respuestaIA => {
-        eliminarEscribiendo();
-        mostrarMensaje("Mapachito", respuestaIA, true);
-      });
-    }
+  // Mostrar resultados
+  if (productosEncontrados.length) {
+    renderizarProductos(productosEncontrados, productosEncontrados.length > 1 ? "🔎 Encontré los siguientes productos:" : "");
+  } else {
+    mostrarMensaje("Mapachito", "No encontré productos relacionados, probá con otra palabra.");
   }
 
   entradaUsuario.value = "";
 });
 
-
 // *****************************************************
-//          FUNCIONES DE INTERFAZ DEL CHAT
+//          FUNCIÓN PARA MOSTRAR CATEGORÍAS
 // *****************************************************
-function mostrarProducto(prod) {
-  const respuesta = `
-    <strong>${prod.nombre.toUpperCase()}</strong><br>
-    📝 ${prod.descripcion}<br>
-    ✅ Beneficios: ${prod.beneficios}<br>
-    🍽️ Usos: ${prod.usos}<br>
-    💲 Precio: $${Number(prod.precio).toFixed(2)}<br>
-    🆔 ID: ${prod.id}
-  `;
-
-  setTimeout(() => {
-    mostrarMensaje("Mapachito", respuesta);
-  }, 700);
-}
-
-function mostrarMensaje(remitente, texto, guardar = true, delay = 0) {
-  setTimeout(() => {
-    const mensaje = document.createElement("p");
-    mensaje.classList.add(remitente);
-    mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
-    chat.appendChild(mensaje);
-    chat.scrollTop = chat.scrollHeight;
-
-    if (guardar) {
-      guardarMensajeEnLocalStorage(remitente, texto);
-    }
-
-    mensaje.querySelectorAll(".categoria-boton").forEach(boton => {
-      boton.addEventListener("click", () => {
-        const categoria = boton.getAttribute("data-categoria");
-        mostrarProductosPorCategoria(categoria);
-      });
-    });
-  }, delay || 400);
-}
-
-function mostrarProductosPorCategoria(categoria) {
-  const baseDeDatos = [...productosHarinas, ...productosSemillas, ...productosEspecias, ...productosCondimentos];
-  const productos = baseDeDatos.filter(p => p.categoria === categoria);
-
-  if (productos.some(() => true)) {
-    mostrarEscribiendo();
-    setTimeout(() => {
-      eliminarEscribiendo();
-      mostrarMensaje("Mapachito", `Estos son los productos en la categoría "${categoria}":`);
-      productos.forEach(p => mostrarProducto(p));
-    }, 1000);
-  } else {
-    mostrarMensaje("Mapachito", `No encontré productos para la categoría "${categoria}".`);
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("categoria-boton")) {
+    const categoria = e.target.dataset.categoria;
+    const productos = {
+      harinas: productosHarinas,
+      semillas: productosSemillas,
+      especias: productosEspecias,
+      condimentos: productosCondimentos
+    }[categoria] || [];
+    renderizarProductos(productos, `Estos son los productos en la categoría "${categoria}":`);
   }
-}
+});
 
 // *****************************************************
-//      LOCALSTORAGE - GUARDAR HISTORIAL DEL CHAT
+//      LOCALSTORAGE - HISTORIAL DEL CHAT
 // *****************************************************
-function guardarMensajeEnLocalStorage(remitente, texto) {
-  let historial = localStorage.getItem("chatHistorial");
-  historial = historial ? JSON.parse(historial) : [];
+function mostrarMensaje(remitente, texto, guardar = true) {
+  const mensaje = document.createElement("p");
+  mensaje.classList.add(remitente);
+  mensaje.innerHTML = `<span class="${remitente}">${remitente === "usuario" ? "👤 Vos" : "🦝 Mapachito"}:</span> ${texto}`;
+  chat.appendChild(mensaje);
+  chat.scrollTop = chat.scrollHeight;
+
+  if (guardar) guardarMensaje(remitente, texto);
+
+  // Escuchar clicks en botones de categoría
+  mensaje.querySelectorAll(".categoria-boton").forEach(boton => {
+    boton.addEventListener("click", () => {
+      const categoria = boton.getAttribute("data-categoria");
+      const productos = {
+        harinas: productosHarinas,
+        semillas: productosSemillas,
+        especias: productosEspecias,
+        condimentos: productosCondimentos
+      }[categoria] || [];
+      renderizarProductos(productos, `Estos son los productos en la categoría "${categoria}":`);
+    });
+  });
+}
+
+function guardarMensaje(remitente, texto) {
+  let historial = JSON.parse(localStorage.getItem("chatHistorial")) || [];
   historial.push({ remitente, texto });
   localStorage.setItem("chatHistorial", JSON.stringify(historial));
 }
 
 // *****************************************************
-//        BORRAR HISTORIAL CON SWEETALERT
+//      BORRAR HISTORIAL
 // *****************************************************
-const botonBorrarHistorial = document.getElementById("borrarHistorial");
-
-botonBorrarHistorial.addEventListener("click", function () {
+document.getElementById("borrarHistorial").addEventListener("click", () => {
   Swal.fire({
     title: '🗑️ ¿Borrar todo?',
     html: '<strong>Se eliminará el historial del chat.</strong><br>Esta acción no se puede deshacer.',
@@ -361,11 +261,11 @@ botonBorrarHistorial.addEventListener("click", function () {
     showCancelButton: true,
     confirmButtonText: 'Sí, borrar',
     cancelButtonText: 'Cancelar',
-    background: '#fffbe6',
-    color: '#1f1f1f',
-    iconColor: '#e6b800',
-    confirmButtonColor: '#e6b800',
-    cancelButtonColor: '#999',
+    background: '#fffbe6',   // Fondo amarillo claro
+    color: '#1f1f1f',        // Texto oscuro
+    iconColor: '#e6b800',    // Icono amarillo
+    confirmButtonColor: '#e6b800', // Botón confirmar amarillo
+    cancelButtonColor: '#999',     // Botón cancelar gris
     customClass: {
       popup: 'swal2-rounded',
       confirmButton: 'swal2-confirm-custom',
@@ -375,49 +275,56 @@ botonBorrarHistorial.addEventListener("click", function () {
     if (result.isConfirmed) {
       localStorage.removeItem("chatHistorial");
       chat.innerHTML = "";
-      console.clear();
 
       Swal.fire({
         title: '✅ ¡Listo!',
         text: 'El historial fue eliminado.',
         icon: 'success',
-        background: '#fffbe6',
-        color: '#1f1f1f',
-        confirmButtonColor: '#e6b800',
-        iconColor: '#70c070'
+        background: '#fffbe6',   // Fondo amarillo claro
+        color: '#1f1f1f',        // Texto oscuro
+        confirmButtonColor: '#e6b800', // Botón confirmar amarillo
+        iconColor: '#70c070'     // Icono verde
       }).then(() => {
-        mostrarMensaje(
-          "Mapachito",
-          `¡Hola de nuevo! Soy Mapachito y estoy acá para ayudarte. 
-           Ingresá el nombre del producto que estás buscando o clickea la categoría que te interese:
-           <div class="contenedor-categorias">
-             <button class="categoria-boton" data-categoria="harinas">Harinas</button>
-             <button class="categoria-boton" data-categoria="semillas">Semillas</button>
-             <button class="categoria-boton" data-categoria="especias">Especias</button>
-             <button class="categoria-boton" data-categoria="condimentos">Condimentos</button>
-             </div>`,
-          false
-        );
+        mensajeBienvenida();
       });
     }
   });
 });
 
 // *****************************************************
-//       FUNCIONES PARA "MAPACHITO ESCRIBIENDO"
+//      FUNCIONES PARA "MAPACHITO ESCRIBIENDO"
 // *****************************************************
 function mostrarEscribiendo() {
-  const escribiendo = document.createElement("p");
-  escribiendo.classList.add("mapachito", "mensaje-escribiendo");
-  escribiendo.id = "mapachito-escribiendo";
-  escribiendo.innerHTML = `<span class="mapachito">🦝 Mapachito:</span> escribiendo...`;
-  chat.appendChild(escribiendo);
-  chat.scrollTop = chat.scrollHeight;
-}
-
-function eliminarEscribiendo() {
-  const escribiendo = document.getElementById("mapachito-escribiendo");
-  if (escribiendo) {
-    escribiendo.remove();
+  if (!document.getElementById("mapachito-escribiendo")) {
+    const escribiendo = document.createElement("p");
+    escribiendo.classList.add("mapachito", "mensaje-escribiendo");
+    escribiendo.id = "mapachito-escribiendo";
+    escribiendo.innerHTML = `<span class="mapachito">🦝 Mapachito:</span> escribiendo...`;
+    chat.appendChild(escribiendo);
+    chat.scrollTop = chat.scrollHeight;
   }
 }
+function eliminarEscribiendo() {
+  const escribiendo = document.getElementById("mapachito-escribiendo");
+  if (escribiendo) escribiendo.remove();
+}
+
+
+// Botón hamburguesa
+const btnMenu = document.getElementById("menu-btn");
+const menu = document.getElementById("menu");
+
+if (btnMenu && menu) {
+  btnMenu.addEventListener("click", () => {
+    menu.classList.toggle("mostrar");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  menu.querySelectorAll("a").forEach(enlace => {
+    enlace.addEventListener("click", () => {
+      menu.classList.remove("mostrar");
+    });
+  });
+}
+
+

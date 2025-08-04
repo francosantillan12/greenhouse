@@ -33,6 +33,7 @@
     "descripcion": "Harina hecha con almendras molidas sin pelar. Más oscura, con más fibra y sabor intenso.",
     "beneficios": "Rica en grasas saludables, proteínas, vitamina E y fibra. Ayuda a la saciedad.",
     "usos": "Repostería saludable, panificados keto, tortas y galletitas sin gluten.",
+    "precio": 1200,
     "palabrasClave": ["almendras", "vitamina E", "fibra", "sin gluten", "keto"]
   },
   {
@@ -42,6 +43,7 @@
     "descripcion": "Harina obtenida de almendras blanqueadas (sin piel), de textura más fina y suave.",
     "beneficios": "Menor contenido de fibra que la versión con piel, pero más neutra en sabor. Rica en grasas buenas.",
     "usos": "Se usa en macarons, tortas finas, bizcochos, panificados bajos en carbohidratos.",
+    "precio": 1200,
     "palabrasClave": ["macarons", "harina suave", "sin gluten", "almendras sin piel", "low carb"]
   },
   {
